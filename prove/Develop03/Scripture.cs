@@ -1,32 +1,34 @@
-// Scripture class represents the scripture itself
-class Scripture
+using System;
+using static System.Console;
+namespace Classes
 {
-    private string _reference;
-    private string _scriptText;
 
-    public Scripture()
+    // Scripture class represents the scripture itself
+    class Scripture
     {
-        _reference = "";
-        _scriptText = "";
+        private string _reference;
+        private string _scriptText;
+
+
+        public Scripture(string reference, string text)
+        {
+            _reference = reference;
+            _scriptText = text;
+        }
+
+    
+        public string GetScriptureParts()
+        {
+            return ($"\n{_reference}\n{_scriptText}");
+        }
+
+        public void DisplayFullScripture()
+        {
+            WriteLine("\n*********************************************** Scripture to Memorize ***********************************************");
+            WriteLine(GetScriptureParts());
+            WriteLine("\n*********************************************************************************************************************");
+
+        }
     }
 
-    public Scripture(string ref1, string word1)
-    {
-        _reference = ref1;
-        _scriptText = word1;
-    }
-
-    public void SetScriptureParts()
-    {
-
-    }
-    public string GetScriptureParts()
-    {
-        return ($"{_reference} {_scriptText}");
-    }
-
-    public void DisplayFullScripture()
-    {
-        Console.WriteLine(GetScriptureParts());
-    }
 }

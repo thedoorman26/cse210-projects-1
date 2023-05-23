@@ -1,35 +1,44 @@
-// Word class represents a single word in the scripture
-class Word
+using System;
+using static System.Console;
+namespace Classes
 {
-   private string _word;
-   private bool _isHidden;
-    
 
-    private List<Word> scriptWords = new List<Word>();
-    public Word()
+    // Word holds the words that make up the scripture.
+    class Word
     {
-        _word = "";
-        
-    }
-    public Word(string word)
-    {
-        _word = word;
-        
-    }
+        //Private variables to hold the word attributes in the class
+        private string _word;
+        private bool _isHidden;
+        private List<Word> words;
 
 
-    public void SetScriptureWords(string word) 
+        //Public array to hold the initial text attributes for the scripture
+        public Word(string word)
         {
             _word = word;
+            _isHidden = false;   
         }
-    public string GetScriptureWords()
-    {
-        return ($"{_word}.");
-    }
-    public void DisplayScriptureWords()
+
+        //Method to put word parts together into a string
+        public string GetScriptureWords()
+        {
+            string text = ($"{_word}");
+            return text;
+        }
+
+        //Method to display the word string
+        public void DisplayScriptureWords()
         {
             Console.WriteLine(GetScriptureWords());
         }
+
+        public void SplitWordSring()
+        {
+
+           
+        }        
+
+    }
 
 }
 
