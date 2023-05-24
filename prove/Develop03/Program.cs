@@ -17,6 +17,8 @@ namespace Classes
             Scripture scripture = new Scripture((reference.GetReference()), (text.GetScriptureWords()));
             scripture.DisplayFullScripture();
 
+            text.SplitWordSring();
+
             WriteLine("\nPress any key to exit...");
             ReadKey();
 
