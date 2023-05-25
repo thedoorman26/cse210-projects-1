@@ -18,6 +18,7 @@ namespace ScriptureMemorization
             _book = book;
             _chapter = chapter;
             _verse = verse;
+            _endVerse = 0;
         }
 
 
@@ -32,11 +33,20 @@ namespace ScriptureMemorization
 
         
         //Method to put reference parts together into a string
-        public string GetReference() 
-        {
-            string reference = ($"{_book} {_chapter}:{_verse} ");
+       public string GetReference() 
+        {   
+            string reference = "";
+            if (_endVerse == 0)
+            {
+                reference = ($"{_book} {_chapter}:{_verse} ");                
+            }
+            else
+            {
+                reference = ($"{_book} {_chapter}:{_verse}-{_endVerse} ");
+            }
             return reference;
         }
+
 
 
         //Method to display the reference string

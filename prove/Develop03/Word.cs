@@ -39,7 +39,8 @@ namespace ScriptureMemorization
         public string GetRenderedText()
         {
             HideWord(); 
-            return string.Join(" ", wordList);   
+            string hiddenVerse = string.Join(" ", wordList);
+            return hiddenVerse;
         }        
 
 

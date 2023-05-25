@@ -35,7 +35,7 @@ namespace ScriptureMemorization
                 WriteLine("\nThis is the Scripture Memorization Program!");
         }
 
-        static void RunDisplayLoop()
+        public static void RunDisplayLoop()
         {
             //Send reference and text of verse to the classes for the scripture that will be worked on
             Reference reference = new Reference("John", 3, 16);
