@@ -1,6 +1,6 @@
 using System;
 using static System.Console;
-namespace Classes
+namespace ScriptureMemorization
 {
 
     // Scripture class represents the scripture itself
@@ -8,12 +8,13 @@ namespace Classes
     {
         private string _reference;
         private string _scriptText;
+        private List<string> wordList = new List<string>();
 
 
-        public Scripture(string reference, string text)
+        public Scripture(string reference, string verse)
         {
             _reference = reference;
-            _scriptText = text;
+            _scriptText = verse;
         }
 
     
@@ -22,15 +23,14 @@ namespace Classes
             return ($"\n{_reference}\n{_scriptText}");
         }
 
+
         public void DisplayFullScripture()
         {
             WriteLine("\n*********************************************** Scripture to Memorize ***********************************************");
             WriteLine(GetScriptureParts());
             WriteLine("\n*********************************************************************************************************************");
+        }       
 
-        }
-
-        
     }
 
 }

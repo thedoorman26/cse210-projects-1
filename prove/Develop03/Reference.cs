@@ -1,6 +1,6 @@
 using System;
 using static System.Console;
-namespace Classes
+namespace ScriptureMemorization
 {
     // Reference class represents the scripture reference
     class Reference
