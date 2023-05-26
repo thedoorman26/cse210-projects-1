@@ -9,11 +9,40 @@ namespace ScriptureMemorization
             
             DisplayWelcomeMessage();
 
-            RunDisplayLoop();
+            //Send reference and text of verse to the classes for the scripture that will be worked on
+            Reference reference = new Reference("John", 3, 16);
+
+            string verseText = ("For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.");
+            Word verse = new Word(verseText);
+
+            
+            //Get reference and text info back from the classes to be displayed
+            Scripture scripture = new Scripture((reference.GetReference()), (verse.GetScriptureWords()));
+            scripture.DisplayFullScripture();
+
+
+            WriteLine("\nPress enter to hide a word... or type 'quit' to end the program.");
+            string input = ReadLine().Trim().ToLower();
+            verse.SplitVerseIntoList();
+            
+            while (input != "quit")
+            {
+                verse.ContinueHideLoop();
+                if (verse.IsCompletlyHidden())
+                {
+                    break;
+                }             
+                WriteLine("\nPress enter to hide a word... or type 'quit' to end the program.");
+                input = ReadLine();
+                WriteLine("Sorry you have to quit!");
+                
+            }
 
             //Closing message and art credit
             DisplayClosingMessage();
         }
+
+
 
         static void DisplayWelcomeMessage()
         {
@@ -31,46 +60,17 @@ namespace ScriptureMemorization
 \/    \/\___|_| |_| |_|\___/|_|  |_/___\__,_|\__|_|\___/|_| |_|
                                                                
 ";
-                WriteLine(BookArt);
-                WriteLine("\nThis is the Scripture Memorization Program!");
+            WriteLine(BookArt);
+            WriteLine("\nThis is the Scripture Memorization Program!");
         }
 
-        public static void RunDisplayLoop()
-        {
-            //Send reference and text of verse to the classes for the scripture that will be worked on
-            Reference reference = new Reference("John", 3, 16);
-
-            string verseText = ("For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.");
-            Word verse = new Word(verseText);
-
-            
-            //Get reference and text info back from the classes to be displayed
-            Scripture scripture = new Scripture((reference.GetReference()), (verse.GetScriptureWords()));
-            scripture.DisplayFullScripture();
-
-
-            WriteLine("\nPress enter to hide a word... or type 'quit' to end the program.");
-            verse.SplitWordSring();
-            
-            while (true)
-            {
-                if (ReadKey().Key == ConsoleKey.Enter)
-                {
-                    verse.ContinueHideLoop();
-                    WriteLine("\nPress enter to hide a word... or type 'quit' to end the program.");
-                }
-                else
-                {
-                    break;
-                }
-            }
-        }
 
         static void DisplayClosingMessage()
         {
-            WriteLine("\nCongratulations on memorizing a scripture!");
+            WriteLine("\nThanks for working on memorizing a scripture!");
+            WriteLine("\nThe program will end now.\n");
             WriteLine("");
-            WriteLine("Art Credit: https://patorjk.com/software/taag/#p=testall&f=Graffiti&t=Memorization");
+            WriteLine("Art Credit: https://patorjk.com/software/taag/#p=testall&f=Graffiti&t=Memorization\n");
         }
     
     }
