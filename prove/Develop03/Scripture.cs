@@ -12,12 +12,12 @@ namespace ScriptureMemorization
         scripture parts when needed. */
         private string _reference;
         private string _scriptText;
+        private string _hiddenScript;
 
         public Scripture()
         {
 
         }
-
 
         /* This is a constructor method for the `Scripture` class that takes two parameters:
         `reference` and `verse`, both of type `string`. */
@@ -28,20 +28,37 @@ namespace ScriptureMemorization
         }
 
     
-        // The function returns a string containing the reference and text of a scripture and returns the string for display.
+        // The method returns a string containing the reference and text of a scripture and returns the string for display.
         public string GetScriptureParts()
         {
             return ($"\n{_reference}\n{_scriptText}");
         }
 
 
-        // This function displays a full scripture to memorize with a header and footer.
+        // This method displays a full scripture to memorize with a header and footer.
         public void DisplayFullScripture()
         {
             WriteLine("\n*********************************************** Scripture to Memorize ***********************************************");
             WriteLine(GetScriptureParts());
             WriteLine("\n*********************************************************************************************************************");
         }     
+
+
+        //This method gets the updated string with hidden words so it can be displayed.
+        public void UpdateHiddenVerse(string hiddenVerse)
+        {
+            _hiddenScript = hiddenVerse;
+        }
+       
+
+        //This method takes the updated string variable and displays it with the scripture reference.
+        public void DisplayHiddenScript()
+        {
+            WriteLine("\n*********************************************** Scripture to Memorize ***********************************************");
+            WriteLine(_reference);
+            WriteLine(_hiddenScript);
+            WriteLine("\n*********************************************************************************************************************");
+        }
 
         
         //This function holds and returns the scripture data for the user choices. Data is currently a string ready to be split by "|".

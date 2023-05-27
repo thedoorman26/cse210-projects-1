@@ -1,6 +1,16 @@
 using System;
 using static System.Console;
 
+/*Creativity and Exceeding Requirements Comment:
+I have learned a lot these past two weeks. I have attempted to add some of that to this coding project.
+I have learned how to change the background and foreground colors, learned how to turn text into ascii art,
+I have also learned how to use concatination to leave the first letter of the hidden word behind as a "hint"
+to the user.  Lastly, I added a menu option to pick from 5 scriptures that are stored in a string that is
+ready to be split and the indexed parts stored into variables (parts learned but still needing practice from
+previous assignement). I also put much more effort into making sure I cleaned up and explained my code with
+comment lines/sections.
+ */
+
 
 namespace ScriptureMemorization
 {
@@ -17,24 +27,29 @@ namespace ScriptureMemorization
             Scripture data = new Scripture();
 
 
-            /* It then prompts the user to enter a choice using the `GetChoice()` method of the `Menu`
+            /* This prompts the user to enter a choice using the `GetChoice()` method of the `Menu`
             instance and stores the user's input in the `userChoice` variable.*/
             string userChoice = choice.GetChoice();
+
             //Takes the user's choice to retrieve a string of scripture data to memorize.
             string choiceString = data.ScriptureChoice(userChoice);
-            //Breaks string up into useable variables
+
+            //Passes the choice string back to Menu to breaks string up into useable variables.
             choice.SplitChoiceString(choiceString);
 
             
-            //This sends individual parts to the reference class
+            //This creates a reference instance and sends individual parts to the reference class from the menu class
             Reference reference = new Reference(choice.GetBook(), choice.GetChapter(), choice.GetVerse(), choice.GetEndVerse());
-            //This sends the script text to the word class
+
+            //This creates a word instance and sends the script text to the word class
             Word verse = new Word(choice.GetScriptText());
-            //This calls and sends the reference and verse info from the word and reference class to the scripture class.
+
+            /*This creates a new scripture instance and calls and sends the reference and verse info from the word and reference
+            class to the scripture class.*/
             Scripture scripture = new Scripture((reference.GetReference()), (verse.GetScriptureWords()));
 
 
-            //This function call is displaying the full scripture.
+            //This function calls and displays the full scripture from scripture class.
             scripture.DisplayFullScripture();
 
 
@@ -56,6 +71,8 @@ namespace ScriptureMemorization
             while (input != "quit")
             {
                 verse.ContinueHideLoop();
+                scripture.UpdateHiddenVerse((verse.GetHiddenVerse()));
+                scripture.DisplayHiddenScript();
                 if (verse.IsCompletlyHidden())
                 {
                     break;
@@ -68,7 +85,7 @@ namespace ScriptureMemorization
 
             //This calls the Closing message and art credit and then the program ends.
             DisplayClosingMessage();
-            
+
         }
 
 
@@ -77,8 +94,7 @@ namespace ScriptureMemorization
         // This function displays a welcome message and an opening image for a Scripture Memorization Program.
         static void DisplayWelcomeMessage()
         {
-            //Title and Background color
-            Title = "Scripture Memorization Program";
+            //Background color
             BackgroundColor = ConsoleColor.White;
             ForegroundColor = ConsoleColor.Blue;
 
@@ -96,11 +112,12 @@ namespace ScriptureMemorization
                                                                
 ";
             WriteLine(welcomeArt);
-            WriteLine(($"\nThis is the {Title}!"));
+            WriteLine(($"\nThis is the Scripture Memorization Program!"));
         }
 
 
-        // The function displays a closing message and art for the scripture memorization program.
+        /* The function displays a closing message and art for the scripture memorization program as well. 
+        as the art credit. */
         static void DisplayClosingMessage()
         {
             string endArt = @"

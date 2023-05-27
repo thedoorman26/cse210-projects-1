@@ -102,23 +102,13 @@ namespace ScriptureMemorization
         }        
 
 
-        // The function displays a hidden verse.
-        public void DisplayRenderHidden()
-        {
-            WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-            WriteLine(GetHiddenVerse());
-            WriteLine("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-        }
-
-
-        // This function continues a loop that hides 3 words, clears the screen, and displays the hidden word.
+        // This function continues a loop that hides 3 words, clears the screen.
         public void ContinueHideLoop()
         {          
             HideWord();
             HideWord();
             HideWord();
             Clear();
-            DisplayRenderHidden();
         }
     }
 }
