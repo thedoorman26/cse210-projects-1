@@ -14,17 +14,6 @@ namespace ScriptureMemorization
         private int _verse;
         private int _endVerse;
 
-       
-        /* This constructor is used to create a `Reference` object that represents a scripture reference with 
-        one verse. The `_endVerse` variable is set to 0 to indicate that this reference only has one verse. */
-        public Reference(string book, int chapter, int verse)
-        {
-            _book = book;
-            _chapter = chapter;
-            _verse = verse;
-            _endVerse = 0;
-        }
-
         
         /* This is a constructor for the `Reference` class that takes four parameters: `book`, `chapter`,
         `verse`, and `endVerse`. This constructor is used to create a `Reference` object that represents a 
