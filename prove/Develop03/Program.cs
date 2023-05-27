@@ -7,8 +7,8 @@ I have learned how to change the background and foreground colors, learned how t
 I have also learned how to use concatination to leave the first letter of the hidden word behind as a "hint"
 to the user.  Lastly, I added a menu option to pick from 5 scriptures that are stored in a string that is
 ready to be split and the indexed parts stored into variables (parts learned but still needing practice from
-previous assignement). I also put much more effort into making sure I cleaned up and explained my code with
-comment lines/sections.
+previous assignment). I also put much more effort into making sure I cleaned up and explained my code with
+comment lines/sections and good spacing.
  */
 
 
