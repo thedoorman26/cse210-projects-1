@@ -1,30 +1,58 @@
 using System;
 using static System.Console;
+
+
 namespace ScriptureMemorization
 {
     class Program
     {
         static void Main(string[] args)
         {
-            
+            // Function that displays a welcome message and an opening image for a Scripture Memorization Program. 
             DisplayWelcomeMessage();
 
-            //Send reference and text of verse to the classes for the scripture that will be worked on
-            Reference reference = new Reference("John", 3, 16);
 
-            string verseText = ("For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.");
-            Word verse = new Word(verseText);
+            /* This code is creating a new instance of the `Menu` class and the `Scripture` class.*/ 
+            Menu choice = new Menu();
+            Scripture data = new Scripture();
+
+
+            /* It then prompts the user to enter a choice using the `GetChoice()` method of the `Menu`
+            instance and stores the user's input in the `userChoice` variable.*/
+            string userChoice = choice.GetChoice();
+            //Takes the user's choice to retrieve a string of scripture data to memorize.
+            string choiceString = data.ScriptureChoice(userChoice);
+            //Breaks string up into useable variables
+            choice.SplitChoiceString(choiceString);
 
             
-            //Get reference and text info back from the classes to be displayed
+            //This sends individual parts to the reference class
+            Reference reference = new Reference(choice.GetBook(), choice.GetChapter(), choice.GetVerse(), choice.GetEndVerse());
+            //This sends the script text to the word class
+            Word verse = new Word(choice.GetScriptText());
+            //This calls and sends the reference and verse info from the word and reference class to the scripture class.
             Scripture scripture = new Scripture((reference.GetReference()), (verse.GetScriptureWords()));
+
+
+            //This function call is displaying the full scripture.
             scripture.DisplayFullScripture();
 
 
-            WriteLine("\nPress enter to hide a word... or type 'quit' to end the program.");
+            /* This code displays a message to the user, then reads the user's input and removes any leading
+            or trailing white space and converts it to lowercase.*/
+            WriteLine("\nWhen ready, press enter to hide words... or type 'quit' to end the program.");
             string input = ReadLine().Trim().ToLower();
+
+
+            /* This method call splits the verse text into a list of individual words and stores it. This allows
+            for individual words to be hidden during the memorization process. */
             verse.SplitVerseIntoList();
             
+
+            /* This code creates a loop that continues until the user enters "quit". Within the loop, the method
+            hides a random word in the verse. It then checks if all the words have been hidden. If all the words 
+            have been hidden, the loop is exited using the `break` statement. If not, user can choose to hit enter
+            to hide more words or 'quit' to end program.*/
             while (input != "quit")
             {
                 verse.ContinueHideLoop();
@@ -32,27 +60,34 @@ namespace ScriptureMemorization
                 {
                     break;
                 }             
-                WriteLine("\nPress enter to hide a word... or type 'quit' to end the program.");
+                WriteLine("\nPress enter to hide more words... or type 'quit' to end the program.");
                 input = ReadLine();
-                WriteLine("Sorry you have to quit!");
-                
+                WriteLine("\nSorry you have to quit!");   
             }
 
-            //Closing message and art credit
+
+            //This calls the Closing message and art credit and then the program ends.
             DisplayClosingMessage();
+            
         }
 
 
+/*These are functions that are specific to open and closing the program and didn't fit in the planned classes */
 
+        // This function displays a welcome message and an opening image for a Scripture Memorization Program.
         static void DisplayWelcomeMessage()
         {
+            //Title and Background color
             Title = "Scripture Memorization Program";
             BackgroundColor = ConsoleColor.White;
             ForegroundColor = ConsoleColor.Blue;
-            //Opening image and welcome
+
+            //Clears the terminal so that new colors will apply
             Clear();
+
+            //Welcome message and art
             WriteLine("\n*/*/*/*/*/*  Welcome!!!  */*/*/*/*/*");
-                string BookArt = @"
+            string welcomeArt = @"
                                   _          _   _             
   /\/\   ___ _ __ ___   ___  _ __(_)______ _| |_(_) ___  _ __  
  /    \ / _ \ '_ ` _ \ / _ \| '__| |_  / _` | __| |/ _ \| '_ \ 
@@ -60,21 +95,29 @@ namespace ScriptureMemorization
 \/    \/\___|_| |_| |_|\___/|_|  |_/___\__,_|\__|_|\___/|_| |_|
                                                                
 ";
-            WriteLine(BookArt);
-            WriteLine("\nThis is the Scripture Memorization Program!");
+            WriteLine(welcomeArt);
+            WriteLine(($"\nThis is the {Title}!"));
         }
 
 
+        // The function displays a closing message and art for the scripture memorization program.
         static void DisplayClosingMessage()
         {
-            WriteLine("\nThanks for working on memorizing a scripture!");
-            WriteLine("\nThe program will end now.\n");
-            WriteLine("");
-            WriteLine("Art Credit: https://patorjk.com/software/taag/#p=testall&f=Graffiti&t=Memorization\n");
-        }
-    
+            string endArt = @"
+  _______ _            ______           _ 
+ |__   __| |          |  ____|         | |
+    | |  | |__   ___  | |__   _ __   __| |
+    | |  | '_ \ / _ \ |  __| | '_ \ / _` |
+    | |  | | | |  __/ | |____| | | | (_| |
+    |_|  |_| |_|\___| |______|_| |_|\__,_|
+                                          
+                                          
+";
+            WriteLine("\n***  Thanks for working on memorizing a scripture!  ***");
+            WriteLine(endArt);
+            WriteLine("===  Art Credit: https://patorjk.com/software/taag/#p=testall&f=Graffiti&t=Memorization  ===\n");
+        }            
     }
-
 }
 
 
