@@ -108,7 +108,6 @@ namespace ScriptureMemorization
             HideWord();
             HideWord();
             HideWord();
-            Clear();
         }
     }
 }

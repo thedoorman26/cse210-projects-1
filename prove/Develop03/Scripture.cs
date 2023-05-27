@@ -27,19 +27,14 @@ namespace ScriptureMemorization
             _scriptText = verse;
         }
 
-    
-        // The method returns a string containing the reference and text of a scripture and returns the string for display.
-        public string GetScriptureParts()
-        {
-            return ($"\n{_reference}\n{_scriptText}");
-        }
-
 
         // This method displays a full scripture to memorize with a header and footer.
         public void DisplayFullScripture()
         {
+            Clear();
             WriteLine("\n*********************************************** Scripture to Memorize ***********************************************");
-            WriteLine(GetScriptureParts());
+            WriteLine(_reference);
+            WriteLine(_scriptText);
             WriteLine("\n*********************************************************************************************************************");
         }     
 
@@ -54,6 +49,7 @@ namespace ScriptureMemorization
         //This method takes the updated string variable and displays it with the scripture reference.
         public void DisplayHiddenScript()
         {
+            Clear();
             WriteLine("\n*********************************************** Scripture to Memorize ***********************************************");
             WriteLine(_reference);
             WriteLine(_hiddenScript);
