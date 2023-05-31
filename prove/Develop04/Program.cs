@@ -1,9 +1,20 @@
 using System;
+using static System.Console;
 
-class Program
+namespace Mindfulness
 {
-    static void Main(string[] args)
+    class Program
     {
-        Console.WriteLine("Hello Develop04 World!");
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello Develop04 World!");
+
+            Menu choice = new Menu();
+            string userChoice = choice.GetChoice();
+            WriteLine(userChoice);
+            ReadKey();
+
+        }
     }
+
 }
