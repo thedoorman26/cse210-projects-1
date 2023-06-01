@@ -12,6 +12,7 @@ namespace Mindfulness
             Menu choice = new Menu();
             string userChoice = choice.GetChoice();
             WriteLine(userChoice);
+            choice.MenuAction(userChoice);
             ReadKey();
 
         }
