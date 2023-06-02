@@ -18,14 +18,26 @@ namespace Mindfulness
 
         public void DisplayActivityStart()
         {
-            WriteLine(($"Welcome to the {_activityName}.  {_description}\nThis activity will last {_timer}ms."));
+            WriteLine(($"\t*****  Welcome to the {_activityName}.  *****"));
+            WriteLine(($"\nDescription: {_description}"));
+            WriteLine(($"\nThis activity will last {_timer} seconds.\n"));
         }
 
         public void DisplayActivityClose()
         {
-            WriteLine(($"Thank you for participating in the {_activityName}. Practicing Mindfulness is a healthy thing to do!"));
-            WriteLine("Press any key to exit");
+            WriteLine(($"\nThank you for participating in the {_activityName}. Practicing Mindfulness is a healthy thing to do!"));
+            WriteLine("\nPress any key to return to the menu...\n");
             ReadKey();
+        }
+
+        public void TrackTime()
+        {
+
+        }
+
+        public void PauseTime()
+        {
+            
         }
 
         public void GetRandomIndex()
@@ -33,11 +45,6 @@ namespace Mindfulness
 
         }
 
-        public void RunActivity()
-        {
-            DisplayActivityStart();
-            DisplayActivityClose();
-        }
     }
 
 

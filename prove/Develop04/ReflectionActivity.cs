@@ -10,6 +10,11 @@ namespace Mindfulness
 
         public ReflectionActivity(string activity, string description, int time) : base(activity, description, time)
         {
+
+        }
+
+        public void RunReflection()
+        {
             
         }
     }

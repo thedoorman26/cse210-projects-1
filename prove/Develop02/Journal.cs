@@ -45,12 +45,9 @@ namespace Classes
     {
         Console.WriteLine("\nSaving to file...");
         
-        using (StreamWriter outputFile = new StreamWriter(Journal._filename))
+        foreach (Entry e in NewEntry)
         {
-            foreach (Entry e in NewEntry)
-            {
-                outputFile.WriteLine($"{e._title}~|~{e._date}~|~{e._prompt}~|~{e._entry}");
-            }
+            File.AppendAllText(_filename, ($"\n{e._title}~|~{e._date}~|~{e._prompt}~|~{e._entry}"));
         }
 
         Console.WriteLine("\nFile Saved...");
