@@ -28,9 +28,8 @@ namespace Mindfulness
                         activityName = "Breathing Activity";
                         activityTime = RequestActivityDuration();
                         string breathDescription = "This activity will help you relax by walking you through breathing in and out slowly. Clear your mind and focus on your breathing.";
-                        //Activity breathe = new Activity(activityName, breathDescription, activityTime);
-                        BreathingActivity breath = new BreathingActivity(activityName, breathDescription, activityTime);
-                        breath.RunBreath();                      
+                        Activity breathe = new Activity(activityName, breathDescription, activityTime);
+                        breathe.SetTimeDuration();                      
                         break;
 
                     case "2":
@@ -38,8 +37,8 @@ namespace Mindfulness
                         activityName = "Reflection Activity";
                         activityTime = RequestActivityDuration();
                         string reflectDescription = "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.";
-                        ReflectionActivity reflect = new ReflectionActivity(activityName, reflectDescription, activityTime);
-                        reflect.RunReflection();                      
+                        Activity reflect = new Activity(activityName, reflectDescription, activityTime);
+                        reflect.SetTimeDuration();                      
                         break;
 
                     case "3":
@@ -47,17 +46,17 @@ namespace Mindfulness
                         activityName = "Listing Activity";
                         activityTime = RequestActivityDuration();
                         string listingDescription = "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.";
-                        ListingActivity list = new ListingActivity(activityName, listingDescription, activityTime);
-                        list.RunListing();                      
+                        Activity list = new Activity(activityName, listingDescription, activityTime);
+                        list.SetTimeDuration();                      
                         break;
 
                     case "4":
                         //Start Naming Activity
                         activityName = "Naming Activity";
                         activityTime = RequestActivityDuration();
-                        string namingDescription = "By naming things you can hear, see and feel, you are grounding yourself by increasing your awareness of your body and your environment.";
-                        NamingActivity name = new NamingActivity(activityName, namingDescription, activityTime);
-                        name.RunNaming();
+                        string groundDescription = "When you take the time to name things you can hear, see, and feel, you are grounding yourself by increasing your awareness of your body and your environment.";
+                        Activity ground = new Activity(activityName, groundDescription, activityTime);
+                        ground.SetTimeDuration();
                         break;
 
                     
@@ -80,7 +79,7 @@ namespace Mindfulness
                 WriteLine("\n1. Start Breathing Activity");
                 WriteLine("2. Start Reflecting Activity");
                 WriteLine("3. Start Listing Activity");
-                WriteLine("4. Start Naming Activity");
+                WriteLine("4. Start Grounding Activity");
                 WriteLine("5. Quit");
                 
                 Write("\nChoice: ");

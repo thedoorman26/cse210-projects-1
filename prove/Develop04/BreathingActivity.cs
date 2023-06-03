@@ -5,9 +5,6 @@ namespace Mindfulness
 {
     class BreathingActivity : Activity
     {
-        private string _in = "IN";
-        private string _out = "OUT";
-
 
         public BreathingActivity(string activity, string description, int time) : base(activity, description, time)
         {
@@ -17,15 +14,18 @@ namespace Mindfulness
         public void RunBreath()
         {
             DisplayActivityStart();
+            PauseTime();
             DisplayBreath();
             DisplayActivityClose();
         }
         public void DisplayBreath()
         {
             //TODO Messages to breathe in ... then out ...
-            Write(($"\nBreathe {_in}..."));
+            Write(($"\nBreathe IN..."));
+            CountDown();
             WriteLine("");
-            Write(($"\nBreathe {_out}"));
+            Write(($"\nBreathe OUT..."));
+            CountDown();
             WriteLine("");
             WriteLine("");
         }
