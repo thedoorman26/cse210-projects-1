@@ -13,7 +13,7 @@ namespace Mindfulness
         }
 
 
-        public void MenuAction()
+        public void MenuItem()
         {
             
             do
@@ -29,7 +29,7 @@ namespace Mindfulness
                         activityTime = RequestActivityDuration();
                         string breathDescription = "This activity will help you relax by walking you through breathing in and out slowly. Clear your mind and focus on your breathing.";
                         Activity breathe = new Activity(activityName, breathDescription, activityTime);
-                        breathe.SetTimeDuration();                      
+                        breathe.RunActivity();                      
                         break;
 
                     case "2":
@@ -38,7 +38,7 @@ namespace Mindfulness
                         activityTime = RequestActivityDuration();
                         string reflectDescription = "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.";
                         Activity reflect = new Activity(activityName, reflectDescription, activityTime);
-                        reflect.SetTimeDuration();                      
+                        reflect.RunActivity();                      
                         break;
 
                     case "3":
@@ -47,18 +47,17 @@ namespace Mindfulness
                         activityTime = RequestActivityDuration();
                         string listingDescription = "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.";
                         Activity list = new Activity(activityName, listingDescription, activityTime);
-                        list.SetTimeDuration();                      
+                        list.RunActivity();                      
                         break;
 
                     case "4":
                         //Start Naming Activity
-                        activityName = "Naming Activity";
+                        activityName = "Grounding Activity";
                         activityTime = RequestActivityDuration();
                         string groundDescription = "When you take the time to name things you can hear, see, and feel, you are grounding yourself by increasing your awareness of your body and your environment.";
                         Activity ground = new Activity(activityName, groundDescription, activityTime);
-                        ground.SetTimeDuration();
+                        ground.RunActivity();
                         break;
-
                     
                     default:
                         break;
@@ -75,6 +74,7 @@ namespace Mindfulness
             do
             {
                 //Menu choices for the user.
+                WriteLine("\n~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~");
                 WriteLine("\nPlease select a Mindfulness Activity.");
                 WriteLine("\n1. Start Breathing Activity");
                 WriteLine("2. Start Reflecting Activity");
@@ -84,6 +84,8 @@ namespace Mindfulness
                 
                 Write("\nChoice: ");
                 _choice = ReadLine();
+                WriteLine("\n~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~");
+
 
                 //This section is to verify that the choice was actually correct and avoids user error problems.
                 if (_choice == "1" || _choice == "2" || _choice == "3" || _choice == "4" || _choice == "5")
@@ -103,7 +105,8 @@ namespace Mindfulness
         {
             Write("\nEnter number of seconds you want to spend on this activity (example: 45): ");
             int activityTime = int.Parse(ReadLine());
-            WriteLine("");
+            Clear();
+
             return activityTime;
         }
         

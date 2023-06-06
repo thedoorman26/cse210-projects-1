@@ -11,37 +11,64 @@ namespace Mindfulness
 
         public GroundingActivity(string activity, string description, int time) : base(activity, description, time)
         {
-            
-        }
-        
-        public void RunGrounding()
-        {
-            DisplayActivityStart();
-            NamingPrompts();
-            DisplayNamedItems();
-            DisplayActivityClose();
-        }
-        
-        public void NamingPrompts()
-        {
             _hearList = new List<string>();
             _seeList = new List<string>();
             _feelList = new List<string>();
+        }
+        
+        public void RunGrounding(DateTime endTime)
+        {
+            DisplayActivityStart();
 
-            //TODO WriteLine Naming Prompts and call track time
-            WriteLine("Listen carefully to the sounds around you. Quickly name the sounds you hear."); 
+            while (DateTime.Now < endTime)
+            { 
+                NameHearing();
+                NameSeeing();
+                NameFeeling();
+            }
+
+            DisplayNamedItems(_hearList, "hear");
+            DisplayNamedItems(_seeList, "see");
+            DisplayNamedItems(_feelList, "touch");
+            DisplayActivityClose();
+        }
+
+        public void NameHearing()
+        {
+            WriteLine("\nListen carefully to the sounds around you. Quickly enter 3 sounds you hear."); 
+            Write("Sound #1: ");
             _hearList.Add(ReadLine());
+            Write("Sound #2: ");
+            _hearList.Add(ReadLine());
+            Write("Sound #3: ");
+            _hearList.Add(ReadLine());
+        }
 
-            WriteLine("Now, look around you and quickly enter things you see.");
+        public void NameSeeing()
+        {
+            WriteLine("\nNow, look around you and quickly enter 2 things you see.");
+            Write("See #1: ");
             _seeList.Add( ReadLine());
+            Write ("See #2: ");
+            _seeList.Add( ReadLine());
+        }
 
-            WriteLine("Finally, quickly enter things you can feel with your touch sense.");
+        public void NameFeeling()
+        {
+            WriteLine("\nFinally, quickly enter something you can feel with your touch sense.");
+            Write("Touch #1: ");
             _feelList.Add(ReadLine());
         }
 
-        public void DisplayNamedItems()
+        public void DisplayNamedItems(List<string> list, string sense)
         {
-            //TODO Display count of named items
+            Write($"\nYou named {list.Count} things you could {sense}: ");
+            foreach (string item in list)
+            {
+                Write($"'{item}' ");
+            }
+            WriteLine("");
+
         }
 
     }

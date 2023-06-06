@@ -12,16 +12,18 @@ namespace Mindfulness
             ReadKey();
 
             Menu choice = new Menu();     
-            choice.MenuAction();
+            choice.MenuItem();
 
-            DisplayOutro();
-            
-            
+            DisplayOutro();           
 
         }
 
         public static void DisplayIntro()
         {
+            BackgroundColor = ConsoleColor.Gray;
+            ForegroundColor = ConsoleColor.Yellow;
+            Clear();
+
             string textIntro = @"
         _           _  __       _                     
   /\/\ (_)_ __   __| |/ _|_   _| |_ __   ___  ___ ___ 
@@ -33,11 +35,14 @@ namespace Mindfulness
             WriteLine("\n~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~");
             WriteLine(textIntro);
             WriteLine("~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~\n");
+            ForegroundColor = ConsoleColor.Blue;
             WriteLine("This is the Mindfulness Program where you can practice calming and training your mind.\n");
         }
 
         public static void DisplayOutro()
         {
+            Clear();
+            ForegroundColor = ConsoleColor.DarkGreen;
             string textOutro = @"
  _   _                          ______          _    __       _  ______            _ 
 | | | |                         | ___ \        | |  / _|     | | |  _  \          | |
@@ -51,6 +56,7 @@ namespace Mindfulness
             WriteLine("\n~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~");
             WriteLine(textOutro);
             WriteLine("~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~\n");
+            ForegroundColor = ConsoleColor.Blue;
             WriteLine("\nArt Credit: https://patorjk.com/software/taag/#p=testall&f=Graffiti&t=Have%20a%20Restful%20Day!\n");
         }
     }

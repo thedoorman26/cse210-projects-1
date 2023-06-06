@@ -11,16 +11,20 @@ namespace Mindfulness
 
         }
 
-        public void RunBreath()
+        public void RunBreath(DateTime endTime)
         {
             DisplayActivityStart();
-            PauseTime();
-            DisplayBreath();
+
+            while (DateTime.Now < endTime)
+            {            
+                DisplayBreath();
+            }
+
             DisplayActivityClose();
         }
+
         public void DisplayBreath()
         {
-            //TODO Messages to breathe in ... then out ...
             Write(($"\nBreathe IN..."));
             CountDown();
             WriteLine("");
@@ -29,7 +33,6 @@ namespace Mindfulness
             WriteLine("");
             WriteLine("");
         }
-
     }
 
 
