@@ -9,16 +9,22 @@ namespace Mindfulness
         List<string> _seeList;
         List<string> _feelList;
 
-        public GroundingActivity(string activity, string description, int time) : base(activity, description, time)
+        public GroundingActivity()
+        {
+
+        }
+
+        public GroundingActivity(string activity, string description) : base(activity, description)
         {
             _hearList = new List<string>();
             _seeList = new List<string>();
             _feelList = new List<string>();
         }
         
-        public void RunGrounding(DateTime endTime)
+        public void RunGrounding()
         {
-            DisplayActivityStart();
+            _activityTime = RequestActivityDuration();
+            DateTime endTime = SetTimeDuration();
 
             while (DateTime.Now < endTime)
             { 
@@ -30,7 +36,7 @@ namespace Mindfulness
             DisplayNamedItems(_hearList, "hear");
             DisplayNamedItems(_seeList, "see");
             DisplayNamedItems(_feelList, "touch");
-            DisplayActivityClose();
+            
         }
 
         public void NameHearing()
@@ -68,10 +74,6 @@ namespace Mindfulness
                 Write($"'{item}' ");
             }
             WriteLine("");
-
         }
-
     }
-
-
 }

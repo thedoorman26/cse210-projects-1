@@ -6,34 +6,37 @@ namespace Mindfulness
     class BreathingActivity : Activity
     {
 
-        public BreathingActivity(string activity, string description, int time) : base(activity, description, time)
+        public BreathingActivity()
         {
-
+            
         }
 
-        public void RunBreath(DateTime endTime)
+        public BreathingActivity(string activity, string description) : base(activity, description)
         {
-            DisplayActivityStart();
+           
+        }
+
+        public void RunBreath()
+        {   
+            _activityTime = RequestActivityDuration();
+            PauseTime("Get Ready");
+
+            DateTime endTime = SetTimeDuration();
 
             while (DateTime.Now < endTime)
             {            
                 DisplayBreath();
-            }
-
-            DisplayActivityClose();
+            }            
         }
 
         public void DisplayBreath()
         {
-            Write(($"\nBreathe IN..."));
-            CountDown();
+            Write(($"\n\nBreathe IN... "));
+            CountDown(6);
             WriteLine("");
-            Write(($"\nBreathe OUT..."));
-            CountDown();
-            WriteLine("");
+            Write(($"\nBreathe OUT... "));
+            CountDown(6);
             WriteLine("");
         }
     }
-
-
 }

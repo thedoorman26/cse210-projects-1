@@ -9,7 +9,11 @@ namespace Mindfulness
         private List<string> _reflectQuestion;
         private int _index;
 
-        public ReflectionActivity(string activity, string description, int time) : base(activity, description, time)
+        public ReflectionActivity()
+        {
+            _activityTime = 0;
+        }
+        public ReflectionActivity(string activity, string description) : base(activity, description)
         {
             _reflectPrompt = new List<string>();
             _reflectQuestion = new List<string>();
@@ -39,23 +43,30 @@ namespace Mindfulness
         public void DisplayReflectionPrompt()
         {
             CreateReflectionLists();
+            WriteLine("");
+            ForegroundColor = ConsoleColor.Cyan;
             WriteLine(_reflectPrompt[GetRandomPromptIndex(_reflectPrompt.Count)]);
-            WriteLine("\n");
+            ForegroundColor = ConsoleColor.Blue;
+            WriteLine("\nPress any key to begin...\n");
+            ReadKey();
         }
-        public void RunReflection(DateTime endTime)
+        public void RunReflection()
         {
-            DisplayActivityStart();
-
+            _activityTime = RequestActivityDuration();
             DisplayReflectionPrompt();
+            
+            DateTime endTime = SetTimeDuration();
+            PauseTime("Start reflecting");
 
             while (DateTime.Now < endTime)
-            {            
-            Thread.Sleep(9000);
-            ShowAndHideQuestions();
-            WriteLine("\n");
+            {     
+                PauseTime("Think deeper");
+                
+                WriteLine("\n");       
+                ShowAndHideQuestions();
+                CountDown(8);                
             }
 
-            DisplayActivityClose();
         }
 
         public void ShowAndHideQuestions()

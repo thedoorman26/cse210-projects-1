@@ -9,61 +9,79 @@ namespace Mindfulness
         protected string _description;
         protected int _activityTime;
 
-        public Activity(string activity, string description, int duration)
+        public Activity()
+        {
+
+        }
+        public Activity(string activity, string description)
         {
             _activityName = activity;
             _description = description;
-            _activityTime = duration;
+
         }
 
         public void RunActivity()
         {
+            DisplayActivityStart();      
+
             if (_activityName == "Breathing Activity")
             {
-                BreathingActivity breath = new BreathingActivity(_activityName, _description, _activityTime);
-                breath.RunBreath(SetTimeDuration());
+                BreathingActivity breath = new BreathingActivity(_activityName, _description);
+                breath.RunBreath();
 
             } else if (_activityName == "Reflection Activity")
             {
-                ReflectionActivity reflect = new ReflectionActivity(_activityName, _description, _activityTime);
-                reflect.RunReflection(SetTimeDuration());
+                ReflectionActivity reflect = new ReflectionActivity(_activityName, _description);
+                reflect.RunReflection();
 
             } else if (_activityName == "Listing Activity")
             {
-                ListingActivity list = new ListingActivity(_activityName, _description, _activityTime);
-                list.RunListing(SetTimeDuration());
+                ListingActivity list = new ListingActivity(_activityName, _description);
+                list.RunListing();
                 
             } else if (_activityName == "Grounding Activity")
             {
-                GroundingActivity ground = new GroundingActivity(_activityName, _description, _activityTime);
-                ground.RunGrounding(SetTimeDuration());
+                GroundingActivity ground = new GroundingActivity(_activityName, _description);
+                ground.RunGrounding();
             }
+
+            DisplayActivityClose();
         }
         public void DisplayActivityStart()
         {
+            Clear();
             ForegroundColor = ConsoleColor.Yellow;
-            WriteLine("\n~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~");
+            WriteLine("\n^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^");
             WriteLine(($"\t*****  Welcome to the {_activityName}.  *****"));
-            WriteLine(($"\nDescription: {_description}"));
-            WriteLine(($"\nThis activity will last {_activityTime} seconds."));
-            WriteLine("\n~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~");
-            ForegroundColor = ConsoleColor.Blue;
-            Write("Get Ready...");
-            PauseTime();
-            WriteLine("");
-
+            Write("\nDescription: ");
+            for (int i = 0; i < _description.Length; i++)
+            {
+                Write(_description[i]);
+                Thread.Sleep(10);
+            }
+            //WriteLine(($"\n\nYou have choosen to practice for {_activityTime} seconds."));
+            WriteLine("\n\n^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^");
+            ForegroundColor = ConsoleColor.Blue;           
         }
 
         public void DisplayActivityClose()
         {
-            PauseTime();
+            PauseTime("Ending");
             ForegroundColor = ConsoleColor.Yellow;
-            WriteLine("\n~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~");
-            WriteLine(($"\nThank you for participating in the {_activityName}. Practicing Mindfulness is a healthy thing to do!"));
-            WriteLine("\n~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~");
+            WriteLine("\n^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^");
+            WriteLine(($"\nThank you for participating in the {_activityName} for {_activityTime} seconds. Practicing Mindfulness is \na healthy thing to do!"));
+            WriteLine("\n^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^");
             ForegroundColor = ConsoleColor.Blue;
             WriteLine("\nPress any key to return to the menu...\n");
             ReadKey();
+        }
+
+        public int RequestActivityDuration()
+        {
+            Write("\nEnter number of seconds you want to spend on this activity (example: 45): ");
+            _activityTime = int.Parse(ReadLine());
+
+            return _activityTime;
         }
 
         public DateTime SetTimeDuration()
@@ -74,11 +92,10 @@ namespace Mindfulness
             return endTime;
         }
 
-
-        public void CountDown()
+        public void CountDown(int n)
         {
             ForegroundColor = ConsoleColor.DarkRed;
-            for (int i=6; i >0; i--)
+            for (int i=n; i >0; i--)
             {
                 Write(i);
                 Thread.Sleep(1000);
@@ -87,22 +104,18 @@ namespace Mindfulness
             ForegroundColor = ConsoleColor.Blue;
         }
 
-        public void PauseTime()
+        public void PauseTime(string phrase)
         {
+            string [] animationStrings = {"|", "/", "-", "\\", "|", "/", "-", "\\", ""};         
+
             ForegroundColor = ConsoleColor.DarkRed;
-            Write("\b \b|");
-            Thread.Sleep(1000);
-            Write("\b \b/");
-            Thread.Sleep(1000);
-            Write("\b \b-");
-            Thread.Sleep(1000);
-            Write("\b \b\\");
-            Thread.Sleep(1000);
-            Write("\b \b|");
-            Thread.Sleep(1000);
-            Write("\b \b");
+            Write($"\n{phrase}... ");
+            foreach (string animate in animationStrings)
+            {
+                Write($"\b \b{animate}");
+                Thread.Sleep(400);    
+            }
             ForegroundColor = ConsoleColor.Blue;
-            //Write("|/-\\|/-\\|");
         }
 
         public int GetRandomPromptIndex(int listCount)
@@ -112,6 +125,8 @@ namespace Mindfulness
             randomIndex = rand.Next(0, listCount);
             return randomIndex;
         }
+
+        
 
     }
 
