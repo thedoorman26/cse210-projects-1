@@ -109,7 +109,7 @@ namespace Mindfulness
         {
             Write("\nEnter number of seconds you want to spend on this activity (example: 45): ");
             _activityTime = int.Parse(ReadLine());
-            WriteLine("");
+            //WriteLine("");
 
             return _activityTime;
         }

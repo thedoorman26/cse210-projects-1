@@ -81,10 +81,10 @@ namespace Mindfulness
                 WriteLine("3. Listing Activity");
                 WriteLine("4. Grounding Activity");
                 WriteLine("5. Quit");
-                
-                Write("\nChoice: ");
-                _choice = ReadLine();
                 WriteLine("\n~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~");
+                
+                Write("\nEnter your choice: ");
+                _choice = ReadLine();
 
 
                 //This section is to verify that the choice was actually correct and avoids user error problems.
