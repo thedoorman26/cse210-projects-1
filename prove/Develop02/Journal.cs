@@ -35,7 +35,7 @@ namespace Classes
         //Method for asking for a file name and creating a new file if one doesn't exist.
         public string CreateFile()
         {
-            Write("What is the name of your journal file (ex: MyJournal.txt)? ");
+            Write("What is the name of your journal file? ");
             _filename = ReadLine();
             if (!File.Exists(_filename))
             {
@@ -83,8 +83,16 @@ namespace Classes
         //Method for reading a file and converting data into a display format.
         public void ReadFromFile()
         {
-            Write("What is the name of the txt file you want to load (example: JournalEntries.txt)? ");
+            Write("\nWhat is the name of the file you want to load? ");
             _filename = ReadLine();
+
+            if (!File.Exists(_filename))
+            {
+                WriteLine($"\n'{_filename}' does not exist.");
+                Write("\nWhat is the name of the file you want to load? ");
+                _filename = ReadLine();
+            }
+
             WriteLine("\nReading Saved File...");
             string[] lines = File.ReadAllLines(_filename);
 
