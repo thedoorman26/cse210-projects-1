@@ -5,20 +5,20 @@ namespace Mindfulness
 {
     class ListingActivity : Activity
     {
+        //Private lists to store and display user answers
         private List<string> _listingPrompt;
-
         private List<string> _listedItems;
 
-        public ListingActivity()
-        {
 
-        }
-        public ListingActivity(string activity, string description): base(activity, description)
+        //Constructor to hold the lists for the class
+        public ListingActivity()
         {
             _listingPrompt = new List<string>();
             _listedItems = new List<string>();
         }
 
+
+        // This function creates a list of prompts for a listing activity.
         public void CreateListingPrompts()
         {
             _listingPrompt.Add(new string("Who are people that you appreciate?"));
@@ -29,30 +29,22 @@ namespace Mindfulness
             _listingPrompt.Add(new string("What miracles have you seen in your life?"));
         }
 
+
+        /* The function displays a randomly selected listing prompt and prompts the user to press any
+        key to begin.*/
         public void DisplayListingPrompt()
         {
             CreateListingPrompts();
-            WriteLine(_listingPrompt[GetRandomPromptIndex(_listingPrompt.Count)]);
-            WriteLine("\nPress any key to begin...\n");
+            ForegroundColor = ConsoleColor.DarkCyan;
+            WriteLine($"**Listing Prompt: {_listingPrompt[GetRandomPromptIndex(_listingPrompt.Count)]}**");
+            ForegroundColor = ConsoleColor.Blue;
+            WriteLine("\nPress any key to begin...");
             ReadKey();
+            PauseTime("Get Ready to List... ");
         }
-
-        public void RunListing()
-        {
-            _activityTime = RequestActivityDuration();
-            DisplayListingPrompt();
-            
-            DateTime endTime = SetTimeDuration();
-            PauseTime("Start thinking");
-
-            while (DateTime.Now < endTime)
-            {            
-                KeepListing();
-            }
-
-            ListedItemsCount();
-                       
-        }
+       
+       
+        // The function adds a user-inputted item to a list.
         public void KeepListing()
         {
             WriteLine("");
@@ -60,11 +52,11 @@ namespace Mindfulness
             _listedItems.Add(ReadLine());
         }
 
+
+        // This function outputs the number of items listed in an exercise.
         public void ListedItemsCount()
         {
             WriteLine($"\nYou listed {_listedItems.Count} items in this exercise.");
         }
     }
-
-
 }

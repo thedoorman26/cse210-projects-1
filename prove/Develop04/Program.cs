@@ -7,17 +7,24 @@ namespace Mindfulness
     {
         static void Main(string[] args)
         {
+            //Intro Method
             DisplayIntro();
+            
+            //Pause for user to choose to go on
             WriteLine("Press any key to continue...");
             ReadKey();
 
+            //Begins the menu class for user choices
             Menu choice = new Menu();     
             choice.MenuItem();
 
+            //Exit message/end of program
             DisplayOutro();           
 
         }
 
+
+        //Intro method set console color and message
         public static void DisplayIntro()
         {
             BackgroundColor = ConsoleColor.Gray;
@@ -39,6 +46,8 @@ namespace Mindfulness
             WriteLine("This is the Mindfulness Program where you can practice \ncalming and training your mind.\n");
         }
 
+
+        //Outro method displays closing message and art credit
         public static void DisplayOutro()
         {
             Clear();

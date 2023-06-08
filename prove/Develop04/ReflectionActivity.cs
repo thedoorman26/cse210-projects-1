@@ -5,21 +5,22 @@ namespace Mindfulness
 {
     class ReflectionActivity: Activity
     {
+        //Private list and variable for the Reflection class
         private List<string> _reflectPrompt;
         private List<string> _reflectQuestion;
         private int _index;
 
+
+        //Constructor for the reflection class
         public ReflectionActivity()
-        {
-            _activityTime = 0;
-        }
-        public ReflectionActivity(string activity, string description) : base(activity, description)
         {
             _reflectPrompt = new List<string>();
             _reflectQuestion = new List<string>();
             _index = 0;
         }
 
+
+        // The function creates two lists of prompts and questions for reflection.
         public void CreateReflectionLists()
         {
             _reflectPrompt.Add(new string("Think of a time when you did something really difficult."));
@@ -37,43 +38,40 @@ namespace Mindfulness
             _reflectQuestion.Add(new string("What could you learn from this experience that applies to other situations?"));
             _reflectQuestion.Add(new string("What did you learn about yourself through this experience?"));
             _reflectQuestion.Add(new string("How can you keep this experience in mind in the future?"));
-
         }
 
+
+        // This function displays a random reflection prompt and waits for user input to begin reflecting.        
         public void DisplayReflectionPrompt()
         {
             CreateReflectionLists();
             WriteLine("");
-            ForegroundColor = ConsoleColor.Cyan;
-            WriteLine(_reflectPrompt[GetRandomPromptIndex(_reflectPrompt.Count)]);
+            ForegroundColor = ConsoleColor.DarkCyan;
+            WriteLine($"**Reflection Prompt: {_reflectPrompt[GetRandomPromptIndex(_reflectPrompt.Count)]}**");
             ForegroundColor = ConsoleColor.Blue;
-            WriteLine("\nPress any key to begin...\n");
+            WriteLine("\nWhen you have something in mind, press any key to begin...");
             ReadKey();
+            PauseTime("Start reflecting... ");
         }
-        public void RunReflection()
+
+
+        // The function displays and hides questions and pauses for a moment.
+        public void PonderQuestions()
         {
-            _activityTime = RequestActivityDuration();
-            DisplayReflectionPrompt();
-            
-            DateTime endTime = SetTimeDuration();
-            PauseTime("Start reflecting");
-
-            while (DateTime.Now < endTime)
-            {     
-                PauseTime("Think deeper");
-                
-                WriteLine("\n");       
-                ShowAndHideQuestions();
-                CountDown(8);                
-            }
-
+            WriteLine("");                   
+            ShowAndHideQuestions();
+            CountDown(10);                            
         }
 
+
+        // This function randomly selects and displays a question from a list, and removes it from the list.
         public void ShowAndHideQuestions()
         {
+            //sets the random index to be used
             _index = GetRandomPromptIndex(_reflectQuestion.Count);
            
-            WriteLine(_reflectQuestion[_index]);  
+           //Displays question and then removes it from the list
+            WriteLine($"\n>{_reflectQuestion[_index]}");  
             _reflectQuestion.RemoveAt(_index);   
         }
     }

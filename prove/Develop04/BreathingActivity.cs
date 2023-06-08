@@ -5,37 +5,24 @@ namespace Mindfulness
 {
     class BreathingActivity : Activity
     {
+        //no new variables in this class
 
+
+        //Constructor for the Activity class
         public BreathingActivity()
         {
             
         }
 
-        public BreathingActivity(string activity, string description) : base(activity, description)
-        {
-           
-        }
 
-        public void RunBreath()
-        {   
-            _activityTime = RequestActivityDuration();
-            PauseTime("Get Ready");
-
-            DateTime endTime = SetTimeDuration();
-
-            while (DateTime.Now < endTime)
-            {            
-                DisplayBreath();
-            }            
-        }
-
+        // The function displays a breathing exercise with a countdown.
         public void DisplayBreath()
         {
-            Write(($"\n\nBreathe IN... "));
-            CountDown(6);
+            Write(($"\nBreathe IN... "));
+            CountDown(4);
             WriteLine("");
             Write(($"\nBreathe OUT... "));
-            CountDown(6);
+            CountDown(4);
             WriteLine("");
         }
     }
