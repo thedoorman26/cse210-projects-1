@@ -41,7 +41,7 @@ namespace Mindfulness
 ";
             WriteLine("\n~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~");
             WriteLine(textIntro);
-            WriteLine("~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~\n");
+            WriteLine("~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~\n");
             ForegroundColor = ConsoleColor.Blue;
             WriteLine("This is the Mindfulness Program where you can practice \ncalming and training your mind.\n");
         }

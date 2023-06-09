@@ -5,10 +5,9 @@ namespace Mindfulness
 {
     class ReflectionActivity: Activity
     {
-        //Private list and variable for the Reflection class
+        //Private lists for the Reflection class
         private List<string> _reflectPrompt;
         private List<string> _reflectQuestion;
-        private int _index;
 
 
         //Constructor for the reflection class
@@ -16,12 +15,11 @@ namespace Mindfulness
         {
             _reflectPrompt = new List<string>();
             _reflectQuestion = new List<string>();
-            _index = 0;
         }
 
 
         // The function creates two lists of prompts and questions for reflection.
-        public void CreateReflectionLists()
+        private void CreateReflectionLists()
         {
             _reflectPrompt.Add(new string("Think of a time when you did something really difficult."));
             _reflectPrompt.Add(new string("Think of a time when you stood up for someone else."));
@@ -65,14 +63,14 @@ namespace Mindfulness
 
 
         // This function randomly selects and displays a question from a list, and removes it from the list.
-        public void ShowAndHideQuestions()
+        private void ShowAndHideQuestions()
         {
             //sets the random index to be used
-            _index = GetRandomPromptIndex(_reflectQuestion.Count);
+            int index = GetRandomPromptIndex(_reflectQuestion.Count);
            
-           //Displays question and then removes it from the list
-            WriteLine($"\n>{_reflectQuestion[_index]}");  
-            _reflectQuestion.RemoveAt(_index);   
+            //Displays question and then removes it from the list
+            WriteLine($"\n>{_reflectQuestion[index]}");  
+            _reflectQuestion.RemoveAt(index);   
         }
     }
 

@@ -18,12 +18,10 @@ namespace Mindfulness
         // The function displays a breathing exercise with a countdown.
         public void DisplayBreath()
         {
-            Write(($"\nBreathe IN... "));
+            WriteLine(($"\nBreathe IN... "));
             CountDown(4);
-            WriteLine("");
-            Write(($"\nBreathe OUT... "));
+            WriteLine(($"\nBreathe OUT... "));
             CountDown(4);
-            WriteLine("");
         }
     }
 }

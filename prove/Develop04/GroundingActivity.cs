@@ -6,9 +6,9 @@ namespace Mindfulness
     class GroundingActivity : Activity
     {
         //Private lists to store and display user answers
-        List<string> _hearList;
-        List<string> _seeList;
-        List<string> _feelList;
+        private List<string> _hearList;
+        private List<string> _seeList;
+        private List<string> _feelList;
 
 
         /* This is a constructor method for the `GroundingActivity` class. It initializes three private
@@ -41,7 +41,7 @@ namespace Mindfulness
 
 
         // The function prompts the user to enter three sounds they hear and adds them to a list.
-        public void NameHearing()
+        private void NameHearing()
         {
             WriteLine("\nQuickly enter 3 sounds you hear."); 
             Write("Sound #1: ");
@@ -54,18 +54,18 @@ namespace Mindfulness
 
 
         // The function prompts the user to enter two things they see and adds them to a list.
-        public void NameSeeing()
+        private void NameSeeing()
         {
             WriteLine("\nQuickly enter 2 things you see.");
             Write("See #1: ");
-            _seeList.Add( ReadLine());
+            _seeList.Add(ReadLine());
             Write ("See #2: ");
-            _seeList.Add( ReadLine());
+            _seeList.Add(ReadLine());
         }
 
 
         // The function prompts the user to enter something they can touch and adds them to a list.
-        public void NameFeeling()
+        private void NameFeeling()
         {
             WriteLine("\nFinally, quickly enter something you can feel with your touch sense.");
             Write("Touch #1: ");
@@ -75,7 +75,7 @@ namespace Mindfulness
 
         /* The function displays a list of named items and a sense associated with them. Parameters 
         take the list and sets the sense in the statement.*/        
-        public void DisplayNamedItems(List<string> list, string sense)
+        private void DisplayNamedItems(List<string> list, string sense)
         {
             Write($"\nYou named {list.Count} things you could {sense}: ");
             foreach (string item in list)

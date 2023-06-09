@@ -19,7 +19,7 @@ namespace Mindfulness
 
 
         // This function creates a list of prompts for a listing activity.
-        public void CreateListingPrompts()
+        private void CreateListingPrompts()
         {
             _listingPrompt.Add(new string("Who are people that you appreciate?"));
             _listingPrompt.Add(new string("What are personal strengths of yours?"));
@@ -36,7 +36,7 @@ namespace Mindfulness
         {
             CreateListingPrompts();
             ForegroundColor = ConsoleColor.DarkCyan;
-            WriteLine($"**Listing Prompt: {_listingPrompt[GetRandomPromptIndex(_listingPrompt.Count)]}**");
+            WriteLine($"\n**Listing Prompt: {_listingPrompt[GetRandomPromptIndex(_listingPrompt.Count)]}**");
             ForegroundColor = ConsoleColor.Blue;
             WriteLine("\nPress any key to begin...");
             ReadKey();

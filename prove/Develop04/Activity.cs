@@ -5,7 +5,7 @@ namespace Mindfulness
 {
     class Activity
     {
-        //Private variable to hold activity details that are passed into Activity
+        //Private variables to hold activity details that are passed into Activity
         private string _activityName;
         private string _description;
         private int _activityTime;
@@ -63,7 +63,7 @@ namespace Mindfulness
                 ground.DisplayGrounding();
             }
             
-            //Close message
+            //Closing message
             DisplayActivityClose();
         }
         
@@ -109,7 +109,6 @@ namespace Mindfulness
         {
             Write("\nEnter number of seconds you want to spend on this activity (example: 45): ");
             _activityTime = int.Parse(ReadLine());
-            //WriteLine("");
 
             return _activityTime;
         }
