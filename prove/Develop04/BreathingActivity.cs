@@ -8,8 +8,8 @@ namespace Mindfulness
         //no new variables in this class
 
 
-        //Constructor for the Activity class
-        public BreathingActivity()
+        //Constructor for the class that gets access to the variables from the parent class.
+        public BreathingActivity(string activity, string description) : base (activity, description)
         {
             
         }

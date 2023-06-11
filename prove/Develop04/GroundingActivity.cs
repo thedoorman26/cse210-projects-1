@@ -12,8 +12,9 @@ namespace Mindfulness
 
 
         /* This is a constructor method for the `GroundingActivity` class. It initializes three private
-        fields `_hearList`, `_seeList`, and `_feelList` as new empty lists of strings. */
-        public GroundingActivity()
+        fields `_hearList`, `_seeList`, and `_feelList` as new empty lists of strings and gets access to the 
+        variables from the parent class. */
+        public GroundingActivity(string activity, string description) : base(activity, description)
         {
             _hearList = new List<string>();
             _seeList = new List<string>();

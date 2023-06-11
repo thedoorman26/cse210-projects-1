@@ -6,8 +6,8 @@ namespace Mindfulness
     class Activity
     {
         //Private variables to hold activity details that are passed into Activity
-        private string _activityName;
-        private string _description;
+        protected string _activityName;
+        protected string _description;
         private int _activityTime;
 
         public Activity()
@@ -15,7 +15,7 @@ namespace Mindfulness
 
         }
 
-        //Constructor to hold variable details passed in
+        //Constructor to hold the common variables for the classes.
         public Activity(string activity, string description)
         {
             _activityName = activity;
@@ -23,16 +23,9 @@ namespace Mindfulness
         }
 
 
-        //Method for running each of the activities that can be picked
+        //Method for running each of the activities that can be picked from the menu.
         public void RunActivity()
         {
-            //Instantiate the child classes
-            BreathingActivity breath = new BreathingActivity(); 
-            ReflectionActivity reflect = new ReflectionActivity();
-            ListingActivity list = new ListingActivity();
-            GroundingActivity ground = new GroundingActivity();  
-
-
             //Start Message
             DisplayActivityStart(); 
 
@@ -41,24 +34,31 @@ namespace Mindfulness
             _activityTime = RequestActivityDuration();
 
 
-            //Starts activity based on the name set from the menu class
+            //Starts activity based on the name sent from the menu class
             if (_activityName == "Breathing Activity")
             {
+                BreathingActivity breath = new BreathingActivity(_activityName, _description); 
                 ActivityTimeLoop(() => breath.DisplayBreath());
-
-            } else if (_activityName == "Reflection Activity")
-            {               
+            } 
+            
+            else if (_activityName == "Reflection Activity")
+            {   
+                ReflectionActivity reflect = new ReflectionActivity(_activityName, _description);            
                 reflect.DisplayReflectionPrompt();
                 ActivityTimeLoop(() => reflect.PonderQuestions());
-
-            } else if (_activityName == "Listing Activity")
+            } 
+            
+            else if (_activityName == "Listing Activity")
             { 
+                ListingActivity list = new ListingActivity(_activityName, _description);
                 list.DisplayListingPrompt();
                 ActivityTimeLoop(() => list.KeepListing());
                 list.ListedItemsCount();
-
-            } else if (_activityName == "Grounding Activity")
+            } 
+            
+            else if (_activityName == "Grounding Activity")
             {
+                GroundingActivity ground = new GroundingActivity(_activityName, _description);
                 ActivityTimeLoop(() => ground.PromptGrounding());
                 ground.DisplayGrounding();
             }
@@ -69,7 +69,7 @@ namespace Mindfulness
         
 
         //Activity start message uses variables so each activity start the same.
-        public void DisplayActivityStart()
+        private void DisplayActivityStart()
         {
             Clear();
             ForegroundColor = ConsoleColor.Yellow;
@@ -91,7 +91,7 @@ namespace Mindfulness
 
 
         //Activity close message that displays a common message, the activity name, and duration.
-        public void DisplayActivityClose()
+        private void DisplayActivityClose()
         {
             PauseTime("Ending... ");
             ForegroundColor = ConsoleColor.Yellow;
@@ -105,17 +105,52 @@ namespace Mindfulness
 
 
         //Asks user to set duration and returns the answer
-        public int RequestActivityDuration()
+        private int RequestActivityDuration()
         {
-            Write("\nEnter number of seconds you want to spend on this activity (example: 45): ");
-            _activityTime = int.Parse(ReadLine());
+            bool properNumber = false;
+
+            do
+            {
+                Write("\nEnter number of seconds you want to spend on this activity (example: 45): ");
+                string userInput  = ReadLine();
+                
+                if (IsPositiveWholeNumber(userInput))
+                {
+                    _activityTime = int.Parse(userInput);
+                    properNumber = true;
+                }
+                else
+                {
+                    WriteLine($"Input '{userInput}' is not a valid number for seconds, please try again.");
+                    properNumber = false;
+                }                            
+            } while (!properNumber);
 
             return _activityTime;
         }
 
+        private bool IsPositiveWholeNumber(string userInput)
+        {
+            if (int.TryParse(userInput, out int number))
+            {
+                if (number > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }                
+            }
+            else
+            {
+                return false;
+            }
+        }
+
 
         //Uses the DateTime class to get time and return the endTime to the activity
-        public DateTime SetTimeDuration()
+        private DateTime SetTimeDuration()
         {
             DateTime startTime = DateTime.Now;
             DateTime endTime = startTime.AddSeconds((_activityTime));
@@ -125,7 +160,7 @@ namespace Mindfulness
 
 
         //This method creates a loop with a set endTime and passes in the activity method 
-        public void ActivityTimeLoop(Action action)
+        private void ActivityTimeLoop(Action action)
         {                       
             DateTime endTime = SetTimeDuration();
 

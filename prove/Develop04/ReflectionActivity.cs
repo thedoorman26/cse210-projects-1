@@ -10,8 +10,8 @@ namespace Mindfulness
         private List<string> _reflectQuestion;
 
 
-        //Constructor for the reflection class
-        public ReflectionActivity()
+        //Constructor for the reflection class. Holds the lists for the class and variables from Activity class.
+        public ReflectionActivity(string activity, string description) : base(activity, description)
         {
             _reflectPrompt = new List<string>();
             _reflectQuestion = new List<string>();

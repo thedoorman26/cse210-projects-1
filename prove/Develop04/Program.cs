@@ -1,6 +1,17 @@
 using System;
 using static System.Console;
 
+/* I exceeded core requirements in several ways. I continue to enjoy using ascii art and colors to make
+the program more interesting.  However, I keep trying to learn new skills.  First, I added a grounding 
+activity that works well for us with our son who has struggles.  Second, as I learned more about animations, 
+I learned how to have the text "write" itself across the screen and did that for the activity description.  
+I felt it made the directions stand out a little better and made reading them a little more exciting. I also 
+added a utility effect to the pause and count down timers making them more customizable.  The countdown can 
+be called and have a number passed in for how high it should start.  The pause timer can have a phrase passed
+in so that one function can be used to say "starting" or "ending" or "wait", etc. This makes it so pause and
+count down have one function each, but are each used in a couple of different ways.  
+*/
+
 namespace Mindfulness
 {
     class Program

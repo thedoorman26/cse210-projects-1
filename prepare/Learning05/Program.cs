@@ -1,9 +1,15 @@
 using System;
 
-class Program
+namespace ShapesArea
 {
-    static void Main(string[] args)
+    class Program
     {
-        Console.WriteLine("Hello Learning05 World!");
+        static void Main(string[] args)
+        {
+            Shape newShape = new Shape("");
+            
+            Square newSquare = new Square("green", 5);
+            newSquare.RunShape();
+        }
     }
 }

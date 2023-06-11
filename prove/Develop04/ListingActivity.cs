@@ -10,8 +10,8 @@ namespace Mindfulness
         private List<string> _listedItems;
 
 
-        //Constructor to hold the lists for the class
-        public ListingActivity()
+        //Constructor to hold the lists for the class and variables from the parent class
+        public ListingActivity(string activity, string description) : base(activity, description)
         {
             _listingPrompt = new List<string>();
             _listedItems = new List<string>();

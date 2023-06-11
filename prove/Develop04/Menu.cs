@@ -29,7 +29,7 @@ namespace Mindfulness
                         //Start Breathing Activity
                         activityName = "Breathing Activity";
                         string breathDescription = "This activity will help you relax by walking you through breathing in and out \nslowly. Clear your mind and get ready to focus on your breathing.";
-                        Activity breathe = new Activity(activityName, breathDescription);
+                        BreathingActivity breathe = new BreathingActivity(activityName, breathDescription);
                         breathe.RunActivity();                      
                         break;
 
@@ -37,7 +37,7 @@ namespace Mindfulness
                         //Start Reflection Activity
                         activityName = "Reflection Activity";
                         string reflectDescription = "This activity will help you reflect on times in your life when you have had the \nopportunity to show strength and resilience. This will help you recognize the power you have and \nhow you can use it in other aspects of your life. Look at the initial prompt and then use the \nfollow up questions to think deeper.";
-                        Activity reflect = new Activity(activityName, reflectDescription);
+                        ReflectionActivity reflect = new ReflectionActivity(activityName, reflectDescription);
                         reflect.RunActivity();                      
                         break;
 
@@ -45,7 +45,7 @@ namespace Mindfulness
                         //Start Listing Activitiy
                         activityName = "Listing Activity";
                         string listingDescription = "This activity will help you reflect on the good things in your life by having you \nlist as many things as you can based on a given prompt.";
-                        Activity list = new Activity(activityName, listingDescription);
+                        ListingActivity list = new ListingActivity(activityName, listingDescription);
                         list.RunActivity();                      
                         break;
 
@@ -53,7 +53,7 @@ namespace Mindfulness
                         //Start Naming Activity
                         activityName = "Grounding Activity";
                         string groundDescription = "When you take the time to name things you can hear, see, and feel, you are grounding \nyourself by increasing your awareness of your body and your environment.";
-                        Activity ground = new Activity(activityName, groundDescription);
+                        GroundingActivity ground = new GroundingActivity(activityName, groundDescription);
                         ground.RunActivity();
                         break;
                     
