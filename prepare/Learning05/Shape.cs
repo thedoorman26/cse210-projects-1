@@ -3,24 +3,14 @@ using static System.Console;
 
 namespace ShapesArea
 {
-    class Shape
+    public abstract class Shape
     {
-        protected string _color;
-
-        //private string _color { get; set; }
+        private string _color;
         
         public Shape(string color)
         {
             _color = color;
         }   
-
-        public void RunShape()
-        {
-            WriteLine("Polymorphism Learning Activity!");
-            
-            WriteLine($"The square is {_color} with an area of {GetArea()}.");
-
-        }
 
         public string GetColor()
         {
@@ -31,10 +21,7 @@ namespace ShapesArea
             _color = color;
         }
 
-        public virtual double GetArea()
-        {
-            return -1;
-        }
+        public abstract double GetArea();
         
     }
 }

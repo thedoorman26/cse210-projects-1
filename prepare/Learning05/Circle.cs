@@ -11,12 +11,17 @@ namespace ShapesArea
 
         public Circle(string color, double radius) : base(color)
         {
-
+            _radius = radius;
         }
 
         public override double GetArea()
         {
-            return -1;
+            return Math.PI * _radius * _radius;
+        }
+
+        public void DisplayCircle()
+        {
+             WriteLine($"The circle is {GetColor()} with an area of {GetArea()}.");
         }
     }
 }

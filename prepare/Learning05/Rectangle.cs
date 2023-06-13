@@ -10,12 +10,18 @@ namespace ShapesArea
 
         public Rectangle(string color, double length, double width) : base(color)
         {
-
+            _lenth = length;
+            _width = width;
         }
 
         public override double GetArea()
         {
-            return -1;
+            return _lenth * _width;
+        }
+
+        public void DisplayRectangle()
+        {
+           WriteLine($"The rectangle is {GetColor()} with an area of {GetArea()}."); 
         }
     }
 }

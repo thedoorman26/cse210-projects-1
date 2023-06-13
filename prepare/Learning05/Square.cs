@@ -17,6 +17,9 @@ namespace ShapesArea
             return _side * _side;
         }
 
-        
+        public void DisplaySquare()
+        {
+            WriteLine($"The square is {GetColor()} with an area of {GetArea()}.");
+        }
     }
 }
