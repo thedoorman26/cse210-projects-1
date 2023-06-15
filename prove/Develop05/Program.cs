@@ -1,9 +1,21 @@
 using System;
+using static System.Console;
 
-class Program
+namespace EternalQuest
 {
-    static void Main(string[] args)
+    class Program
     {
-        Console.WriteLine("Hello Develop05 World!");
+        static void Main(string[] args)
+        {
+            WriteLine("\nHello Eternal Quest World!");
+
+            //Pause for user to choose to go on
+            WriteLine("\nPress any key to continue...");
+            ReadKey();
+
+            //Begins the menu class for user choices
+            Menu choice = new Menu();     
+            choice.MenuItem();
+        }
     }
 }
