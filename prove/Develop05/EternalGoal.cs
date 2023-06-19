@@ -17,21 +17,17 @@ namespace EternalQuest
 
         }
 
-        public override void SetGoal()
-        {
-            _goalType = "Eternal Goal";
-            Write("What is the name of your goal?  ");
-            _goalName = ReadLine();
-            Write("What is a short description of your goal?  ");
-            _goalDescription = ReadLine();
-            Write("What is the amount of points your goal is worth?  ");
-            _goalPoints = int.Parse(ReadLine());
-        }
 
         public override string CreatSavedData()
         {
             string entryData = ($"{_goalType}~|~{_goalName}~|~{_goalDescription}~|~{_goalPoints}\n");
             return entryData;           
+        }
+
+        public override string DisplayGoal()
+        {
+            string display = ($"[ ] {_goalType}: {_goalName} | {_goalDescription} | {_goalPoints}");
+            return display;
         }
 
         public override void CalculatePoints()

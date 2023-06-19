@@ -7,7 +7,7 @@ namespace EternalQuest
     {
         string _choice;
         // GoalHandling goal = new GoalHandling(); 
-        List<Goal> _goals = new List<Goal>();
+        ListHandling newGoal = new ListHandling();
 
         public Menu()
         {
@@ -30,12 +30,14 @@ namespace EternalQuest
 
                     case "2":
                         //List Goals
-                        WriteLine("List Goals");                 
+                        WriteLine("List Goals"); 
+                        newGoal.ListGoal();                
                         break;
 
                     case "3":
                         //Save Goals
                         WriteLine("Save Goals");
+                        newGoal.SaveGoal();
                                   
                         break;
 
@@ -69,10 +71,10 @@ namespace EternalQuest
 
             do
             {
-                //GoalHandling points = new GoalHandling();
-                WriteLine($"You have '  ' points.");
+                
                 //Menu choices for the user.
                 WriteLine("\n*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
+                WriteLine($"\nYou have {newGoal.GetPoints()} points.");
                 WriteLine("\nWhat would you like to do in the Eternal Quest Program?");
                 WriteLine("\n1. Create New Goal");
                 WriteLine("2. List Goals");
@@ -102,7 +104,8 @@ namespace EternalQuest
 
         public void SubMenu()
         {
-            //List<Goal> _goals = new List<Goal>();
+            
+            string type = "";
             WriteLine("\n*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
             WriteLine("\nWhat kind of goal would you like to make?");
             WriteLine("\n1. Simple Goal");
@@ -117,20 +120,20 @@ namespace EternalQuest
             if (goalChoice == "1")
             {
                 WriteLine("Choice 1");
-                SimpleGoal simple = new SimpleGoal();
-                simple.SetGoal();
+                type = "Simple Goal";
+                newGoal.SetGoal(type);
             } 
             else if (goalChoice == "2")  
             {
                 WriteLine("Choice 2");
-                ChecklistGoal check = new ChecklistGoal();
-                check.SetGoal();
+                type = "Checklist Goal";
+                newGoal.SetGoal(type);
             } 
             else if (goalChoice == "3")
             {
                 WriteLine("Choice 3");
-                EternalGoal eternal = new EternalGoal();
-                eternal.SetGoal();
+                type = "Eternal Goal";
+                newGoal.SetGoal(type);
             }
             else  WriteLine($"\n'{goalChoice}' is not an available choice. Try Again.");
            
