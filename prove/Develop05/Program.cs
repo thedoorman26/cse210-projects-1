@@ -11,8 +11,10 @@ namespace EternalQuest
             WriteLine("\nHello Eternal Quest World!");
 
             //Pause for user to choose to go on
+            ForegroundColor = ConsoleColor.Gray;
             WriteLine("\nPress any key to continue...");
             ReadKey();
+            ForegroundColor = ConsoleColor.Blue;
 
             //Begins the menu class for user choices
             Menu choice = new Menu();     
@@ -23,8 +25,8 @@ namespace EternalQuest
 
         public static void DisplayIntro()
         {
-            BackgroundColor = ConsoleColor.Gray;
-            ForegroundColor = ConsoleColor.Yellow;
+            BackgroundColor = ConsoleColor.Yellow;
+            ForegroundColor = ConsoleColor.DarkRed;
             Clear();
 
             string textIntro = @"
@@ -38,14 +40,14 @@ namespace EternalQuest
 (_______/   )_(   (_______/|/   \__/|/    )_)|/     \|(_______/  (____\/_)(_______)(_______/\_______)   )_(   
                                                                                                               
 ";
-            WriteLine("\n*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
+            WriteLine("\n*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
             for (int i = 0; i < textIntro.Length; i++)
             {
                 Write(textIntro[i]);
                 Thread.Sleep(1);
             }
             //WriteLine(textIntro);
-            WriteLine("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n");
+            WriteLine("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n");
             ForegroundColor = ConsoleColor.Blue;
             WriteLine("The program that makes setting goals fun and motivating!\n");
         }
@@ -53,7 +55,7 @@ namespace EternalQuest
         public static void DisplayOutro()
         {
             Clear();
-            ForegroundColor = ConsoleColor.DarkGreen;
+            ForegroundColor = ConsoleColor.DarkRed;
             string textOutro = @"
    _____ _                __  __       _   _            _           _ _ 
   / ____| |              |  \/  |     | | (_)          | |         | | |

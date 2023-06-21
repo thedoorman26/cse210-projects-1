@@ -20,19 +20,19 @@ namespace EternalQuest
 
         public override string CreatSavedData()
         {
-            string entryData = ($"{_goalType}~|~{_goalName}~|~{_goalDescription}~|~{_goalPoints}\n");
+            string entryData = ($"{_goalType}:{_goalName}~|~{_goalDescription}~|~{_goalPoints}\n");
             return entryData;           
         }
 
         public override string DisplayGoal()
         {
-            string display = ($"[ ] {_goalType}: {_goalName} | {_goalDescription} | {_goalPoints}");
+            string display = ($"[ ] {_goalType}: {_goalName} ({_goalDescription})");
             return display;
         }
 
-        public override void CalculatePoints()
+        public override int CalculatePoints()
         {
-
+            return 0;
         }
         public override void RecordEvent()
         {

@@ -5,7 +5,7 @@ namespace EternalQuest
 {
     class SimpleGoal : Goal
     {
-
+        bool complete;
         public SimpleGoal()
         {
 
@@ -16,22 +16,31 @@ namespace EternalQuest
             
         }
 
-        
+        public SimpleGoal(string type, string name, string description, int points, string status) : base (type, name, description, points)
+        {
+            complete = Convert.ToBoolean(status);
+        }
 
+
+        // public override void SetGoal(string type)
+        // {
+        //     base.SetGoal(type);
+            
+        // }
         public override string CreatSavedData()
         {
-            string entryData = ($"[ ] {_goalType}~|~{_goalName}~|~{_goalDescription}~|~{_goalPoints}~|~{IsComplete()}\n");
+            string entryData = ($"{_goalType}:{_goalName}~|~{_goalDescription}~|~{_goalPoints}~|~{IsComplete()}\n");
 
             return entryData;           
         }
         public override string DisplayGoal()
         {
-            string display = ($"{_goalType}: {_goalName} | {_goalDescription} | {_goalPoints}");
+            string display = ($"[ ] {_goalType}: {_goalName} ({_goalDescription})");
             return display;
         }
-        public override void CalculatePoints()
+        public override int CalculatePoints()
         {
-
+            return _goalPoints;
         }
         public override void RecordEvent()
         {
@@ -39,7 +48,14 @@ namespace EternalQuest
         }
         public override bool IsComplete()
         {
+            if (complete)
+            {
+                return true;
+            }
+            else
+            {
             return false;
+            }
         }
         
     }

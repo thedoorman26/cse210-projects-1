@@ -30,32 +30,50 @@ namespace EternalQuest
 
                     case "2":
                         //List Goals
-                        WriteLine("List Goals"); 
+                        ForegroundColor = ConsoleColor.DarkRed;
+                        WriteLine("\nGoals List:");
+                        ForegroundColor = ConsoleColor.Blue; 
                         newGoal.ListGoal();                
                         break;
 
                     case "3":
                         //Save Goals
-                        WriteLine("Save Goals");
+                        ForegroundColor = ConsoleColor.DarkRed;
+                        WriteLine("\nSave Goals");
+                        Thread.Sleep(1000);
                         newGoal.SaveGoal();
+                        WriteLine("Your goals have been saved!");
+                        ForegroundColor = ConsoleColor.Blue;
                                   
                         break;
 
                     case "4":
                         //Load Goals
-                        WriteLine("Load Goals");                 
+                        ForegroundColor = ConsoleColor.DarkRed;
+                        WriteLine("\nLoading Goals");  
+                        newGoal.LoadGoal();
+                        Thread.Sleep(1000);
+                        ForegroundColor = ConsoleColor.DarkRed;
+                        WriteLine("Goal file Loaded!  Please choose 'List Goals' from the main menu to see the list of goals."); 
+                        ForegroundColor = ConsoleColor.Blue;              
                         break;
 
                     case "5":
                         //Record Event
-                        WriteLine("Record Event");                 
+                        ForegroundColor = ConsoleColor.DarkRed;
+                        WriteLine("\nRecord Event");
+                        ForegroundColor = ConsoleColor.Blue;                 
                         break;                    
                     
                     default:
                         break;
                 }
+
+                ForegroundColor = ConsoleColor.Gray;
                 Write("Press any key to return to the main menu...");
                 ReadKey();
+                ForegroundColor = ConsoleColor.Blue;
+
             } while (_choice != "6");
             
 
@@ -74,7 +92,9 @@ namespace EternalQuest
                 
                 //Menu choices for the user.
                 WriteLine("\n*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
+                ForegroundColor = ConsoleColor.DarkRed;
                 WriteLine($"\nYou have {newGoal.GetPoints()} points.");
+                ForegroundColor = ConsoleColor.Blue;
                 WriteLine("\nWhat would you like to do in the Eternal Quest Program?");
                 WriteLine("\n1. Create New Goal");
                 WriteLine("2. List Goals");
@@ -84,8 +104,11 @@ namespace EternalQuest
                 WriteLine("6. Quit");
                 WriteLine("\n*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
                 
+                ForegroundColor = ConsoleColor.DarkRed;
                 Write("\nEnter your choice: ");
+                ForegroundColor = ConsoleColor.Blue;
                 _choice = ReadLine();
+                
 
 
                 //This section is to verify that the choice was actually correct and avoids user error problems.
@@ -113,8 +136,11 @@ namespace EternalQuest
             WriteLine("3. Eternal Goal");
             WriteLine("\n*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
             
+            ForegroundColor = ConsoleColor.DarkRed;
             Write("\nEnter your choice: ");
+            ForegroundColor = ConsoleColor.Blue;
             string goalChoice = ReadLine();
+            
 
             //This section is to verify that the choice was actually correct and avoids user error problems.
             if (goalChoice == "1")

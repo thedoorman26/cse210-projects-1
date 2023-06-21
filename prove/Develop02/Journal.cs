@@ -107,6 +107,12 @@ namespace Classes
                 string entryDate = parts[1];
                 string entryPrompt = parts[2];
                 string entryAnswer = parts[3];
+
+                 //Instantiate entry and send off arguments to entry class
+                Entry newEntry = new Entry(entryTitle, entryDate, entryPrompt, entryAnswer);
+
+                //Add newEntry to the _newEntries List.
+                _newEntries.Add(newEntry); 
                 
                 //displays the entry by parts
                 WriteLine($"\nTitle: {entryTitle}");

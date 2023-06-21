@@ -26,9 +26,26 @@ namespace EternalQuest
             _goalType = type;           
         }
         
+        // public virtual void SetGoal(string type)
+        // {
+        //     _goalType = type;
+        //     ForegroundColor = ConsoleColor.DarkRed;
+        //     Write("\nWhat is the name of your goal?  ");
+        //     ForegroundColor = ConsoleColor.Blue;
+        //     _goalName = ReadLine();
+        //     ForegroundColor = ConsoleColor.DarkRed;
+        //     Write("What is a short description of your goal?  ");
+        //     ForegroundColor = ConsoleColor.Blue;
+        //     _goalDescription = ReadLine();
+        //     ForegroundColor = ConsoleColor.DarkRed;
+        //     Write("What is the amount of points your goal is worth?  ");
+        //     ForegroundColor = ConsoleColor.Blue;
+        //     _goalPoints = int.Parse(ReadLine());
+        // }
+        
         public abstract string DisplayGoal();
         public abstract string CreatSavedData();
-        public abstract void CalculatePoints();
+        public abstract int CalculatePoints();
         public abstract void RecordEvent();
         public abstract bool IsComplete();
     }
