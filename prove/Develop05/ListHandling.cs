@@ -5,22 +5,31 @@ namespace EternalQuest
 {
     class ListHandling
     {
-        //private int _totalPoints;
+        //Overall points variable to hold the tally for the program.
+        public int _totalPoints;
+        //The Goal List that is pivotal to the function of the program
         private List<Goal> _goals;
 
-        List<string> _simpleData = new List<string>();
-        List<string> _checkData = new List<string>();
-        List<string> _eternalData = new List<string>();
 
-        private int _totalPoints { get; set; }
+        //Locoal lists that assist in loading data from a file and splitting data to be loaded into Goal List.
+        private List<string> _simpleData = new List<string>();
+        private List<string> _checkData = new List<string>();
+        private List<string> _eternalData = new List<string>();
 
+
+        //Listhandling Constructor that instantiates the List<Goal>.
         public ListHandling()
         {
             _goals = new List<Goal>();            
         }
 
-        public void SetGoal(string type)
+
+        //Method to set goals, instantiate them to their class and add them to Goal List
+        public void SetGoal(string category)
         {
+            //Common set goal questions
+            Clear();
+            string type = category;
             ForegroundColor = ConsoleColor.DarkRed;
             Write("\nWhat is the name of your goal?  ");
             ForegroundColor = ConsoleColor.Blue;
@@ -34,16 +43,16 @@ namespace EternalQuest
             ForegroundColor = ConsoleColor.Blue;
             int goalPoints = int.Parse(ReadLine());
 
-            string category = type;
-            if (category == "Simple Goal")
-            {
-                
-                SimpleGoal simple = new SimpleGoal(category, goalName, goalDescription, goalPoints);
-                _goals.Add(simple);                
+            //Instantiate the Simple Goal set
+            if (type == "Simple Goal")
+            {                
+                SimpleGoal simple = new SimpleGoal(type, goalName, goalDescription, goalPoints);
+                _goals.Add(simple);
             }
 
-            else if (category == "Checklist Goal")
-            {
+            //Instantiate the checklist goal set, requires a couple more questions and variables
+             else if (category == "Checklist Goal")
+            {                        
                 ForegroundColor = ConsoleColor.DarkRed;
                 Write("\nHow many times does this goal need to be accomplished for a bonus?  ");
                 ForegroundColor = ConsoleColor.Blue;
@@ -52,22 +61,21 @@ namespace EternalQuest
                 Write($"What is the amount of bonus points for repeating the goal {repeat} times?  ");
                 ForegroundColor = ConsoleColor.Blue;
                 int bonus = int.Parse(ReadLine());
-                ChecklistGoal checklist = new ChecklistGoal(category, goalName, goalDescription, goalPoints, bonus, repeat);
-                _goals.Add(checklist);
+
+                ChecklistGoal check = new ChecklistGoal(type, goalName, goalDescription, goalPoints, bonus, repeat);
+                _goals.Add(check);
             }
 
+            //instantiate the eternal goal set
             else if (category == "Eternal Goal")
             {
-                EternalGoal eternal = new EternalGoal(category, goalName, goalDescription, goalPoints);
+                EternalGoal eternal = new EternalGoal(type, goalName, goalDescription, goalPoints);
                 _goals.Add(eternal);
             }
         }
 
-        public int GetPoints()
-        {
-            return _totalPoints;
-        }
 
+        //Method to iterate through the goal list and display the goals
         public void ListGoal()
         {   
             int i = 1;
@@ -78,6 +86,8 @@ namespace EternalQuest
             }
         }
 
+
+        //Method to Save goals
         public void SaveGoal()
         {
             string fileName = GetFileName();
@@ -91,6 +101,8 @@ namespace EternalQuest
             }
         }
 
+
+        //Method to Load a goal file, parse text file into parts, add parts to Goal list.
         public void LoadGoal()
         {
             string fileName= GetFileName();
@@ -99,7 +111,6 @@ namespace EternalQuest
 
             foreach (string line in lines)
             {
-                //WriteLine(line);
                 // //breaks line text string data into parts
                 string[] parts = line.Split(":");
 
@@ -126,27 +137,74 @@ namespace EternalQuest
                     _eternalData.Add(eternal);
                 }
             }  
+
+            //Split goal data strings that was loaded from file and add to goal list
             SplitSimpleData();      
             SplitCheckData();
             SplitEternalData();               
         }
 
+
+        //Record event by listing goals, user picks, then abstract class methods record event and get points
+        public void UserRecordEvent()
+        {
+            WriteLine("\nThe Goals Are:\n");
+
+            
+            ForegroundColor = ConsoleColor.Blue;
+
+            int i = 1;
+            foreach (Goal g in _goals)
+            {
+                WriteLine($"{i}. {g.GetGoalName()}");
+                i += 1;
+            }
+
+            ForegroundColor = ConsoleColor.DarkRed;
+            Write("\nWhich goal would you like to record?  ");
+            ForegroundColor = ConsoleColor.Blue;
+
+            int done = int.Parse(ReadLine()) - 1;
+
+            _totalPoints += _goals[done].RecordEvent();
+        }
+
+
+        //Method to remove a goal from the list
+        public void RemoveGoal()
+        {
+            ForegroundColor = ConsoleColor.Blue;
+            ListGoal();
+
+            ForegroundColor = ConsoleColor.DarkRed;
+            Write("\nWhich goal would you like to remove?  ");
+            ForegroundColor = ConsoleColor.Blue;
+
+            int userDelete = int.Parse(ReadLine()) - 1;
+
+            _goals.Remove(_goals[userDelete]);
+        }
+
+
+        //Simple goal data string list created when file loaded, gets split and added to Goal list
         private void SplitSimpleData()
         {
             foreach (string item in _simpleData)
             {
                 string [] parts = item.Split("~|~");
 
-            string name = parts[0];
-            string description = parts[1];
-            int points = int.Parse(parts[2]);
-            string complete = parts[3];
-
-            SimpleGoal simple = new SimpleGoal("Simple Goal", name, description, points, complete);
-            _goals.Add(simple);
+                string name = parts[0];
+                string description = parts[1];
+                int points = int.Parse(parts[2]);
+                bool status = Convert.ToBoolean(parts[3]);
+                
+                SimpleGoal simple = new SimpleGoal("Simple Goal", name, description, points, status);
+                _goals.Add(simple);
             }
         }
 
+
+        //Checklist goal data string list created when file loaded, gets split and added to Goal list
         private void SplitCheckData()
         {
             foreach (string item in _checkData)
@@ -160,12 +218,13 @@ namespace EternalQuest
                 int times = int.Parse(parts[4]);
                 int repeat = int.Parse(parts[5]);
             
-
                 ChecklistGoal checklist = new ChecklistGoal("Checklist Goal", name, description, points, bonus, times, repeat);
                 _goals.Add(checklist);
             }
         }
 
+
+        //Eternal goal data string list created when file loaded, gets split and added to Goal list
         private void SplitEternalData()
         {
             foreach (string item in _eternalData)
@@ -176,12 +235,13 @@ namespace EternalQuest
                 string description = parts[1];
                 int points = int.Parse(parts[2]);
             
-
                 EternalGoal eternal = new EternalGoal("Eternal Goal", name, description, points);
                 _goals.Add(eternal);
             }
         }
 
+
+        //Method that is used by load and save methods.  Gets a file name (creates it if needed) and verifies input is good
         public string GetFileName()
         {
             ForegroundColor = ConsoleColor.DarkRed;
@@ -210,26 +270,6 @@ namespace EternalQuest
 
             return fileName;
         }
-
-        private bool IsPositiveWholeNumber(string userInput)
-        {
-            if (int.TryParse(userInput, out int number))
-            {
-                if (number > 0)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }                
-            }
-            else
-            {
-                return false;
-            }
-        }
     }
-
 }
 

@@ -5,19 +5,21 @@ namespace EternalQuest
 {
     public abstract class Goal
     {
-
+        //Private attributes used in the goal child classes
         protected string _goalName;
         protected string _goalDescription;
         protected int _goalPoints;
         protected string _goalType;
-        
-        //protected string _goalType { get; set; }
+        protected bool _complete;
+
 
         public Goal()
         {
-           
+          
         }
 
+
+        //Constructor to set base attributes
         public Goal(string type, string name, string description, int points)
         {
             _goalName = name;
@@ -26,27 +28,32 @@ namespace EternalQuest
             _goalType = type;           
         }
         
-        // public virtual void SetGoal(string type)
-        // {
-        //     _goalType = type;
-        //     ForegroundColor = ConsoleColor.DarkRed;
-        //     Write("\nWhat is the name of your goal?  ");
-        //     ForegroundColor = ConsoleColor.Blue;
-        //     _goalName = ReadLine();
-        //     ForegroundColor = ConsoleColor.DarkRed;
-        //     Write("What is a short description of your goal?  ");
-        //     ForegroundColor = ConsoleColor.Blue;
-        //     _goalDescription = ReadLine();
-        //     ForegroundColor = ConsoleColor.DarkRed;
-        //     Write("What is the amount of points your goal is worth?  ");
-        //     ForegroundColor = ConsoleColor.Blue;
-        //     _goalPoints = int.Parse(ReadLine());
-        // }
+
+        //Getter method for goal name
+        public string GetGoalName()
+        {
+            return _goalName;
+        }
+
+
+        //Getter method for goal points
+        public int GetGoalPoints()
+        {
+            return _goalPoints;
+        }
         
+
+        //Bool to change complete status
+        public virtual bool MarkComplete()
+        {
+            _complete = true;
+            return  _complete;
+        }
+
+        //Abstract methods that are overridden in the child classes
         public abstract string DisplayGoal();
         public abstract string CreatSavedData();
-        public abstract int CalculatePoints();
-        public abstract void RecordEvent();
-        public abstract bool IsComplete();
+        public abstract int RecordEvent();
+        public abstract string IsComplete();
     }
 }

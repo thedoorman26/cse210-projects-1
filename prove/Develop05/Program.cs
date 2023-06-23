@@ -7,8 +7,9 @@ namespace EternalQuest
     {
         static void Main(string[] args)
         {
+            //Beginning Art and Explanation
             DisplayIntro();
-            WriteLine("\nHello Eternal Quest World!");
+
 
             //Pause for user to choose to go on
             ForegroundColor = ConsoleColor.Gray;
@@ -16,13 +17,18 @@ namespace EternalQuest
             ReadKey();
             ForegroundColor = ConsoleColor.Blue;
 
-            //Begins the menu class for user choices
+
+            //Begins the menu class for user choices, user choices of the program run from Menu
             Menu choice = new Menu();     
             choice.MenuItem();
 
+
+            //Closing Art and art credit, end of program
             DisplayOutro();
         }
 
+
+        //Intro Method
         public static void DisplayIntro()
         {
             BackgroundColor = ConsoleColor.Yellow;
@@ -40,18 +46,15 @@ namespace EternalQuest
 (_______/   )_(   (_______/|/   \__/|/    )_)|/     \|(_______/  (____\/_)(_______)(_______/\_______)   )_(   
                                                                                                               
 ";
-            WriteLine("\n*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
-            for (int i = 0; i < textIntro.Length; i++)
-            {
-                Write(textIntro[i]);
-                Thread.Sleep(1);
-            }
-            //WriteLine(textIntro);
+            WriteLine("\n*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");            
+            WriteLine(textIntro);
             WriteLine("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n");
             ForegroundColor = ConsoleColor.Blue;
             WriteLine("The program that makes setting goals fun and motivating!\n");
         }
 
+
+        //Outro Method
         public static void DisplayOutro()
         {
             Clear();
@@ -66,9 +69,9 @@ namespace EternalQuest
                    __/ |                                                
                   |___/                                                 
 ";
-            WriteLine("\n~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~");
+            WriteLine("\n~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^");
             WriteLine(textOutro);
-            WriteLine("~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~\n");
+            WriteLine("\n~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^");
             ForegroundColor = ConsoleColor.Blue;
             WriteLine("\nArt Credit: https://patorjk.com/software/taag/#p=testall&f=Graffiti&t=Have%20a%20Restful%20Day!\n");
         }

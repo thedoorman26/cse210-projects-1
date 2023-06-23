@@ -5,57 +5,54 @@ namespace EternalQuest
 {
     class SimpleGoal : Goal
     {
-        bool complete;
-        public SimpleGoal()
-        {
+        //no new attributes needed in this class
 
-        }
 
+        //Constructor used to pass arguments from the set goal method
         public SimpleGoal(string type, string name, string description, int points) : base (type, name, description, points)
         {
             
         }
 
-        public SimpleGoal(string type, string name, string description, int points, string status) : base (type, name, description, points)
+
+        //Constructor used to load parsed data strings from a file
+        public SimpleGoal(string type, string name, string description, int points, bool status) : base (type, name, description, points)
         {
-            complete = Convert.ToBoolean(status);
+           _complete = status;
         }
 
 
-        // public override void SetGoal(string type)
-        // {
-        //     base.SetGoal(type);
-            
-        // }
+        //Method to create a string to save to a file
         public override string CreatSavedData()
         {
-            string entryData = ($"{_goalType}:{_goalName}~|~{_goalDescription}~|~{_goalPoints}~|~{IsComplete()}\n");
+            string entryData = ($"{_goalType}:{_goalName}~|~{_goalDescription}~|~{_goalPoints}~|~{_complete}\n");
 
             return entryData;           
         }
+
+
+        //Method to display specific goal data
         public override string DisplayGoal()
         {
-            string display = ($"[ ] {_goalType}: {_goalName} ({_goalDescription})");
+            string display = ($"{IsComplete()} {_goalType}: {_goalName} ({_goalDescription})");
+
             return display;
         }
-        public override int CalculatePoints()
-        {
-            return _goalPoints;
-        }
-        public override void RecordEvent()
-        {
 
+
+        //Method to record a goal for the user, marks it complete, sends points back to be added to total.
+        public override int RecordEvent()
+        {        
+            WriteLine($"\nYou completed the simple goal '{GetGoalName()}' and gained {GetGoalPoints()} points!");
+            MarkComplete();
+            return GetGoalPoints();            
         }
-        public override bool IsComplete()
+
+
+        //Method to change the checkbox from empty to filled if complete
+        public override string IsComplete()
         {
-            if (complete)
-            {
-                return true;
-            }
-            else
-            {
-            return false;
-            }
+                return _complete ? "[X]" : "[ ]";
         }
         
     }

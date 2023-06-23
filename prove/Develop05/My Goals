@@ -1,6 +1,9 @@
-Score:350
-Simple Goal:cook a new meal~|~learn a new skill in cooking dinner~|~100~|~False
-Checklist Goal:burn 3000 calories~|~work hard enough in a day to burn 3000 calories~|~150~|~750~|~2~|~10
-Eternal Goal:read new testiment chapter~|~read 1 chapter at a time~|~50
+Score:600
+Simple Goal:Give a talk~|~Speak in Sacrament meeting when asked~|~100~|~True
+Simple Goal:cook a new meal~|~learn a new skill in cooking dinner~|~100~|~True
 Simple Goal:run a 5k~|~increase my ability to run again~|~150~|~False
-Simple Goal:give a talk~|~talk in sacrament when asked~|~50~|~False
+Simple Goal:give a talk~|~talk in sacrament when asked~|~50~|~True
+Checklist Goal:Attend the temple~|~Attend and perform any ordinance~|~50~|~500~|~0~|~10
+Checklist Goal:burn 3000 calories~|~work hard enough in a day to burn 3000 calories~|~150~|~1000~|~2~|~10
+Eternal Goal:Study the scriptures~|~Study for at least 10 minutes~|~50
+Eternal Goal:read new testiment chapter~|~read 1 chapter at a time~|~50
