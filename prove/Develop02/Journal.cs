@@ -108,7 +108,7 @@ namespace Classes
                 string entryPrompt = parts[2];
                 string entryAnswer = parts[3];
 
-                 //Instantiate entry and send off arguments to entry class
+                //Instantiate entry and send off arguments to entry class
                 Entry newEntry = new Entry(entryTitle, entryDate, entryPrompt, entryAnswer);
 
                 //Add newEntry to the _newEntries List.
