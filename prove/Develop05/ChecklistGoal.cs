@@ -80,7 +80,7 @@ namespace EternalQuest
             //if repeat is done, marks complete and sends back points for both the goal and the bonus.
             if (GetTimesCompleted() == GetRepeatTimes())
             {
-                WriteLine($"\nCongratulations! You completed the checklist goal '{GetGoalName()}' and gained a bonus of {GetBonusPoints()} points!");
+                WriteLine($"\nCongratulations! You completed the checklist goal '{GetGoalName()}' and gained {GetGoalPoints()} points, PLUS a bonus of {GetBonusPoints()} points!");
                 MarkComplete();
                 
                 return (GetGoalPoints() + GetBonusPoints());
