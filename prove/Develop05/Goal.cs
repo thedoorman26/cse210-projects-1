@@ -13,6 +13,7 @@ namespace EternalQuest
         protected bool _complete;
 
 
+        //Goal constructor
         public Goal()
         {
           
@@ -49,6 +50,7 @@ namespace EternalQuest
             _complete = true;
             return  _complete;
         }
+
 
         //Abstract methods that are overridden in the child classes
         public abstract string DisplayGoal();

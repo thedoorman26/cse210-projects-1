@@ -36,7 +36,7 @@ namespace EternalQuest
                         WriteLine("\nGoals List:\n");
                         ForegroundColor = ConsoleColor.Blue; 
                         newGoal.ListGoal();    
-                                    
+
                         break;
 
                     case "3":
@@ -99,7 +99,7 @@ namespace EternalQuest
 
 
         //This method contains the prompts for the menu and a way to validate the users choice
-        public string GetChoice()
+        private string GetChoice()
         {
             Clear();
             _choice = "";
@@ -110,8 +110,18 @@ namespace EternalQuest
                 //Menu choices for the user.
                 WriteLine("\n*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
                 ForegroundColor = ConsoleColor.DarkRed;
-                WriteLine($"\nYou have {newGoal._totalPoints} points.");
+                
+                //Displays the Goal Master Badge and level based on points
+                Badges newBadge = new Badges();
+                string masterLevel = newBadge.GetBadgeLevel(newGoal.GetTotalPoints());
+                WriteLine(newBadge.BadgeArt(masterLevel));
+
+                //Displays Total points
+                WriteLine($"\n     You have {newGoal.GetTotalPoints()} points");
                 ForegroundColor = ConsoleColor.Blue;
+
+                //Displays menu choices
+                WriteLine("\n*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
                 WriteLine("\nWhat would you like to do in the Eternal Quest Program?");
                 WriteLine("\n1. Create New Goal");
                 WriteLine("2. List Goals");
@@ -148,7 +158,7 @@ namespace EternalQuest
 
 
         //This is a secondary menu that appears for Choice 1 so the user can create a goal
-        public void SubMenu()
+        private void SubMenu()
         {            
             string type = "";
             WriteLine("\n*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");

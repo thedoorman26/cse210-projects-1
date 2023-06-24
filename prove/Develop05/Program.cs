@@ -51,6 +51,7 @@ namespace EternalQuest
             WriteLine("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n");
             ForegroundColor = ConsoleColor.Blue;
             WriteLine("The program that makes setting goals fun and motivating!\n");
+            WriteLine("Set goals, work hard, and then record goals to earn points and increase your Goal Master level!!!");
         }
 
 
@@ -73,7 +74,8 @@ namespace EternalQuest
             WriteLine(textOutro);
             WriteLine("\n~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^");
             ForegroundColor = ConsoleColor.Blue;
-            WriteLine("\nArt Credit: https://patorjk.com/software/taag/#p=testall&f=Graffiti&t=Have%20a%20Restful%20Day!\n");
+            WriteLine("\nArt Credit: https://patorjk.com/software/taag/#p=testall&f=Graffiti&t=Have%20a%20Restful%20Day!");
+            WriteLine("https://www.asciiart.eu/miscellaneous/badges ; Art by Joan G. Stark\n");
         }
     }
 }

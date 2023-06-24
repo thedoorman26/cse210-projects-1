@@ -6,7 +6,7 @@ namespace EternalQuest
     class ListHandling
     {
         //Overall points variable to hold the tally for the program.
-        public int _totalPoints;
+        private int _totalPoints;
         //The Goal List that is pivotal to the function of the program
         private List<Goal> _goals;
 
@@ -23,6 +23,13 @@ namespace EternalQuest
             _goals = new List<Goal>();            
         }
 
+
+        //Getter for total points
+        public int GetTotalPoints()
+        {
+            return _totalPoints;
+        }
+        
 
         //Method to set goals, instantiate them to their class and add them to Goal List
         public void SetGoal(string category)
@@ -167,6 +174,7 @@ namespace EternalQuest
             int done = int.Parse(ReadLine()) - 1;
 
             _totalPoints += _goals[done].RecordEvent();
+            WriteLine($"\nYour new points total is: {_totalPoints}");
         }
 
 
@@ -242,7 +250,7 @@ namespace EternalQuest
 
 
         //Method that is used by load and save methods.  Gets a file name (creates it if needed) and verifies input is good
-        public string GetFileName()
+        private string GetFileName()
         {
             ForegroundColor = ConsoleColor.DarkRed;
             Write("\nWhat is the name of the goal file? ");
@@ -262,7 +270,7 @@ namespace EternalQuest
                 else
                 {
                     ForegroundColor = ConsoleColor.DarkRed;
-                    WriteLine("\nWhat is the name of the goal file? ");
+                    Write("\nWhat is the name of the goal file? ");
                     ForegroundColor = ConsoleColor.Blue;
                     fileName = ReadLine();
                 }               
