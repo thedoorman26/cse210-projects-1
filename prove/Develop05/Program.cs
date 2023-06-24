@@ -1,6 +1,14 @@
 using System;
 using static System.Console;
 
+/*This program used all my skills I have learned so far.  For extra, I tried to use contrasting colors to make
+the program more usable and readable.  I also added an extra menu option to remove goals from the list. That
+allows the user to remove completed goals, or cancel a goal that is no longer desired.  Additionally, I added a 
+Goal Master level tracking in the Badges Class.  It displays the level on an ascii badge on the main screen.  As
+the user earns points the level numbers will increase.  If a user loads a file, the badge will automatically set 
+to the correct level for the users points. At this time, the levels max out at level 10 after the user has earned
+11,200 points.*/
+
 namespace EternalQuest
 {
     class Program
