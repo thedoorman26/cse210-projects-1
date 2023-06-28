@@ -10,8 +10,12 @@ namespace Foundation1
     {
         static void Main(string[] args)
         {
+            BackgroundColor = ConsoleColor.Cyan;
+            ForegroundColor = ConsoleColor.DarkMagenta;
+
+            Clear();
             WriteLine("\nYouTube Video Tracking!");
-            WriteLine("Press any key to see video data...");
+            WriteLine("\nPress any key to see video data...");
             ReadKey();
 
 
@@ -46,13 +50,16 @@ namespace Foundation1
             video4.AddComment("Shawn Cordner", "Just wish you could have done this back in 82 when I graduated. I miss the Widsow building and the Cluff  green houses.");
             video4.AddComment("Steven Doyel", "Welcome to BYU-VR.");
 
-            List<Video> _videos = new List<Video> {video1, video2};
-
+            List<Video> _videos = new List<Video> {video1, video2, video3, video4};
+            int i = 1;
             foreach (Video v in _videos)
             {
+                Clear();
+                WriteLine($"Video {i}");
+                i += 1;
                 v.DisplayVideo();
                 
-                WriteLine("\nComments:");
+                WriteLine("\nComments:\n");
                 foreach (Comment c in v._comments)
                 {
                     c.DisplayComments();
@@ -62,7 +69,7 @@ namespace Foundation1
                 ReadKey();
             }
             
-            WriteLine("\nEnd of Video Data Listed!  Thanks for checking vidoe tracking!");
+            WriteLine("\nEnd of Video Data Listed!  Thanks for checking vidoe tracking!\n\n");
 
         }
     }

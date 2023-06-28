@@ -1,9 +1,16 @@
 using System;
+using System.IO;
+using System.Collections.Generic;
+using static System.Console;
 
-class Program
+
+namespace Foundation2
 {
-    static void Main(string[] args)
+    class Program
     {
-        Console.WriteLine("Hello Foundation2 World!");
+        static void Main(string[] args)
+        {
+            WriteLine("\nOnline Ordering Program!\n");
+        }
     }
 }

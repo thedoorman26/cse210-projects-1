@@ -17,7 +17,7 @@ namespace Foundation1
 
         public void DisplayComments()
         {
-            WriteLine($"Name: {_name}: '{_text}'");
+            WriteLine($"Name: {_name} \n  '{_text}'");
         }
 
     }
