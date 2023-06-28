@@ -11,12 +11,16 @@ namespace Foundation2
         private string _street;
         private string _city;
         private string _state;
-        private int _zipcode;
+        private string _zipcode;
         private string _country;
 
-        public Address()
+        public Address(string street, string city, string state, string zipcode, string country)
         {
-
+            _street = street;
+            _city = city;
+            _state = state;
+            _zipcode = zipcode;
+            _country = country;
         }
 
         public bool InUsa()
@@ -28,9 +32,9 @@ namespace Foundation2
             else return false;
         }
 
-        public void GetAddress()
+        public string GetAddress()
         {
-            WriteLine($"{_street}\n{_city}, {_state} {_zipcode}\n{_country}");
+            return ($"{_street}\n{_city}, {_state} {_zipcode}\n{_country}");
         }
     }
 }

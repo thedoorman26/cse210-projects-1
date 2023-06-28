@@ -8,20 +8,35 @@ namespace Foundation2
 {
     class Product
     {
-        private string _productName;
-        private int _productId;
+        public string _productName{get; private set;}
+        public int _productId{get; private set;}
         private double _price;
         private int _quantity;
 
-        public Product()
+
+        public Product(string name, int number, double price, int qty)
         {
+            _productName = name;
+            _productId = number;
+            _price = price;
+            _quantity = qty;
 
         }
 
-        public double TotalProductPrice()
+        public double CalculateProductPrice()
         {
             double cost = _price * _quantity;
             return cost;
+        }
+
+        public string GetProdName()
+        {
+            return _productName;
+        }
+
+        public int GetProdId()
+        {
+            return _productId;
         }
     }
 }

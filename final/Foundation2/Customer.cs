@@ -12,14 +12,27 @@ namespace Foundation2
 
         private Address _address;
 
-        public Customer()
+        public Customer(string name, Address address)
         {
-
+            _name = name;
+            _address = address;
         }
 
-        public void CheckCountry()
+        public string GetName()
         {
-            
+            return _name;
         }
+        public bool CheckCountry()
+        {
+            return _address.InUsa();
+        }
+
+        public string GetCustomerAddress()
+        {
+            string custAddress = _address.GetAddress();
+            return custAddress;
+        }
+
+        
     }
 }

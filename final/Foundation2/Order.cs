@@ -9,37 +9,56 @@ namespace Foundation2
     class Order
     {
         List<Product> _products = new List<Product>();
-        private Customer customer;
+        private Customer _customer;
 
-        public Order()
+        public Order(Customer customer)
         {
-
+            _customer = customer;
         }
 
-        public void AddProducts(Product product)
+        public void AddProducts(string name, int id, double price, int qty)
         {
+            Product product = new Product(name, id, price, qty);
             _products.Add(product);
         }
 
         public string MakeShippingLabel()
         {
-            return "";
+            string shipLabel = ($"{_customer.GetName()}\n{_customer.GetCustomerAddress()}\n");
+            return shipLabel;
         }
 
         public string MakePackingLabel()
         {
-            return "";
+            string prodLabel = "";
+            foreach (Product p in _products)
+            {
+                prodLabel += ($"Product ID: {p._productId} -- Product: {p._productName};\n");
+            }
+            return prodLabel;
         }
 
         public int GetShippingCost()
         {
-            
-            return 5;
+            if (_customer.CheckCountry())
+            {
+                return 5;
+            }
+
+            else
+                return 35;                
         }
 
         public double TotalPurchasePrice()
         {
-            return 0;
+            double total = 0;
+
+            foreach (Product p in _products)
+            {
+                total += p.CalculateProductPrice();
+            }
+            total += GetShippingCost();
+            return total;
         }
     }
 }
