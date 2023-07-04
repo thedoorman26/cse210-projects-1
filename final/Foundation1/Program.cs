@@ -10,9 +10,11 @@ namespace Foundation1
     {
         static void Main(string[] args)
         {
+            //Change program colors
             BackgroundColor = ConsoleColor.Cyan;
             ForegroundColor = ConsoleColor.DarkMagenta;
 
+            //Welcome message
             Clear();
             WriteLine("\nYouTube Video Tracking!");
             WriteLine("\nPress any key to see video data...");
@@ -50,7 +52,12 @@ namespace Foundation1
             video4.AddComment("Shawn Cordner", "Just wish you could have done this back in 82 when I graduated. I miss the Widsow building and the Cluff  green houses.");
             video4.AddComment("Steven Doyel", "Welcome to BYU-VR.");
 
+
+            //Create a list of videos entered
             List<Video> _videos = new List<Video> {video1, video2, video3, video4};
+
+
+            //Iterate through list of videos to display info and number each video
             int i = 1;
             foreach (Video v in _videos)
             {
@@ -66,10 +73,13 @@ namespace Foundation1
                     WriteLine("");
                 }
 
+                //Waits for user to press key before showing next video data
                 Write("\nPress any key to see next video...\n\n");
                 ReadKey();
             }
-            
+
+
+            //Closing message after last video data is viewed.
             WriteLine("\nEnd of Video Data Listed!  Thanks for checking vidoe tracking!\n\n");
 
         }

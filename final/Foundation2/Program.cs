@@ -10,24 +10,19 @@ namespace Foundation2
     {
         static void Main(string[] args)
         {
+            //Change program colors
             BackgroundColor = ConsoleColor.DarkGray;
             ForegroundColor = ConsoleColor.DarkYellow;
             Clear();
 
+
+            //Welcome message
             WriteLine("\nOnline Ordering Program!\n");
             WriteLine("Press any key to continue...");
-            ReadKey();
+            ReadKey();      
 
-            // Product product1 = new Product("Soda", 2319, 2.50);
-            // Product product2 = new Product("Candybar", 2589, 1.75);
-            // Product product3 = new Product("Pancake Mix", 1489, 3.99);
-            // Product product4 = new Product("Milk", 4712, 3.75);
-            // Product product5 = new Product("Dzn Eggs", 3190, 3.25);
-            // Product product6 = new Product("Bread", 3597, 2.98);
-            // Product product7 = new Product("Oil", 1264, 2.80);
 
-            
-
+            //Add first customer order
             Address address1 = new Address("1234 Question St.", "Spring", "UT", "84201", "USA");
             Customer customer1 = new Customer("Norma Bridge", address1);
             Order order1 = new Order(customer1);
@@ -36,6 +31,8 @@ namespace Foundation2
             order1.AddProducts("Milk", 4712, 3.75, 1);
             order1.AddProducts("Bread", 3597, 2.98, 1);
 
+
+            //Add second customer order
             Address address2 = new Address("720 E Railway St.", "Raymond", "AB", "T0K 2S0", "CANADA");
             Customer customer2 = new Customer("Meg Larson", address2);
             Order order2 = new Order(customer2);
@@ -44,8 +41,11 @@ namespace Foundation2
             order2.AddProducts("Milk", 4712, 3.75, 1);
             order2.AddProducts("Dzn Eggs", 3190, 3.25, 2);
 
+
+            //Create a list to hold orders
             List<Order> _orders = new List<Order>{order1, order2};
 
+            //Iterate through the list of orders to display shipping and product labels with a total cost
             int i = 1;
             foreach (Order o in _orders)
             {
@@ -59,6 +59,8 @@ namespace Foundation2
                 ReadKey();            
             }
 
+
+            //Closing message
             WriteLine("\nThanks for using the Online Ordering System!!\n");
 
         }

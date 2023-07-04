@@ -8,26 +8,35 @@ namespace Foundation2
 {
     class Order
     {
+        //Attribute for Order class and a list for Products
         List<Product> _products = new List<Product>();
         private Customer _customer;
-
+        
+        
+        //Constructor for Order class
         public Order(Customer customer)
         {
             _customer = customer;
         }
 
+        
+        //Method to add products to list
         public void AddProducts(string name, int id, double price, int qty)
         {
             Product product = new Product(name, id, price, qty);
             _products.Add(product);
         }
 
+
+        //Method to display the shipping label info
         public string MakeShippingLabel()
         {
             string shipLabel = ($"   {_customer.GetName()}\n{_customer.GetCustomerAddress()}\n");
             return shipLabel;
         }
 
+        
+        //Method to display packing label info
         public string MakePackingLabel()
         {
             string prodLabel = "";
@@ -38,6 +47,8 @@ namespace Foundation2
             return prodLabel;
         }
 
+
+        //Method to set the shipping cost based on country status
         public int GetShippingCost()
         {
             if (_customer.CheckCountry())
@@ -49,6 +60,8 @@ namespace Foundation2
                 return 35;                
         }
 
+
+        //Method to calculate total order price
         public double TotalPurchasePrice()
         {
             double total = 0;
