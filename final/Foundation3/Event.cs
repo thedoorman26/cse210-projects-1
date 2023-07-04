@@ -25,7 +25,7 @@ namespace Foundation3
 
         public string StandardDetails()
         {
-            string standard = ($"Title: {_eventTitle}\nDescription: {_description}\nDate: {_date.ToShortDateString}\nTime: {_time}\nAddress:\n{_address.GetAddress()}");
+            string standard = ($"Title: {_eventTitle}\nDescription: {_description}\nDate: {_date.ToShortDateString()}\nTime: {_time}\nAddress:\n{_address.GetAddress()}");
             return standard;
         }
 

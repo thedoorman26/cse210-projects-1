@@ -17,7 +17,7 @@ namespace Foundation3
 
             List<Event> _events = new ();
 
-            Console.WriteLine("\nHello Foundation 3 World!\n");
+            Console.WriteLine("\nHello Event Planning World!\n");
 
             WriteLine("Press any key when ready...");
             ReadKey();
@@ -35,7 +35,8 @@ namespace Foundation3
             
             foreach (Event e in _events)
             {
-                WriteLine($"Event Type: {e.GetType()}");
+                WriteLine("");
+                WriteLine($"Event Type: {e.GetType().Name}");
                 WriteLine(e.StandardDetails());
 
                 WriteLine("Press any key when ready...");
