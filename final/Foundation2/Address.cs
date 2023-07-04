@@ -34,7 +34,7 @@ namespace Foundation2
 
         public string GetAddress()
         {
-            return ($"{_street}\n{_city}, {_state} {_zipcode}\n{_country}");
+            return ($"   {_street}\n   {_city}, {_state} {_zipcode}\n   {_country}");
         }
     }
 }

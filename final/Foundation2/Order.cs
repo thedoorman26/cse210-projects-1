@@ -24,7 +24,7 @@ namespace Foundation2
 
         public string MakeShippingLabel()
         {
-            string shipLabel = ($"{_customer.GetName()}\n{_customer.GetCustomerAddress()}\n");
+            string shipLabel = ($"   {_customer.GetName()}\n{_customer.GetCustomerAddress()}\n");
             return shipLabel;
         }
 
@@ -33,7 +33,7 @@ namespace Foundation2
             string prodLabel = "";
             foreach (Product p in _products)
             {
-                prodLabel += ($"Product ID: {p._productId} -- Product: {p._productName};\n");
+                prodLabel += ($"   Product ID: {p.GetProdId()} -- {p.GetProdName()}\n");
             }
             return prodLabel;
         }

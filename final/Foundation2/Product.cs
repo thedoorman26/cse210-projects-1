@@ -8,8 +8,8 @@ namespace Foundation2
 {
     class Product
     {
-        public string _productName{get; private set;}
-        public int _productId{get; private set;}
+        private string _productName;
+        private int _productId;        
         private double _price;
         private int _quantity;
 
@@ -20,7 +20,6 @@ namespace Foundation2
             _productId = number;
             _price = price;
             _quantity = qty;
-
         }
 
         public double CalculateProductPrice()

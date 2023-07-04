@@ -63,6 +63,7 @@ namespace Foundation1
                 foreach (Comment c in v._comments)
                 {
                     c.DisplayComments();
+                    WriteLine("");
                 }
 
                 Write("\nPress any key to see next video...\n\n");

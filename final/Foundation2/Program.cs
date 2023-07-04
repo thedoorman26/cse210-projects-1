@@ -52,12 +52,14 @@ namespace Foundation2
                 Clear();
                 WriteLine($"Order #{i}\n");
                 i += 1;
-                WriteLine($"Shipping Label:\n{o.MakeShippingLabel()}");
-                WriteLine($"Packaging Label:\n{o.MakePackingLabel()}");
+                WriteLine($"Shipping Label:\n\n{o.MakeShippingLabel()}\n");
+                WriteLine($"Packaging Label:\n\n{o.MakePackingLabel()}");
                 WriteLine($"Order Total: ${o.TotalPurchasePrice()}");
                 WriteLine("\nPress any key for next order...");   
                 ReadKey();            
             }
+
+            WriteLine("\nThanks for using the Online Ordering System!!\n");
 
         }
     }
