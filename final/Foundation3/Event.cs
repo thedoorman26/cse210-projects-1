@@ -6,13 +6,13 @@ using static System.Console;
 namespace Foundation3
 {
 
-    class Event
+    public abstract class Event
     {
-        private string _eventTitle;
-        private string _description;
-        DateTime _date;
-        TimeSpan _time;
-        Address _address;
+        protected string _eventTitle;
+        protected string _description;
+        protected DateTime _date;
+        protected TimeSpan _time;
+        protected Address _address;
 
         public Event(string title, string description, DateTime date, TimeSpan time, Address address)
         {
@@ -23,20 +23,31 @@ namespace Foundation3
             _address = address;
         } 
 
+        public string DisplayTimeFrame()
+        {
+            DateTime startTime = _date;
+            TimeSpan timeFrame = _time;
+
+            DateTime endTime = startTime + timeFrame; // Calculate end time based on time frame
+
+            string eventTime =(startTime.ToString("h:mm tt") + " - " + endTime.ToString("h:mm tt"));
+
+            return eventTime;
+        }
+
         public string StandardDetails()
         {
-            string standard = ($"Title: {_eventTitle}\nDescription: {_description}\nDate: {_date.ToShortDateString()}\nTime: {_time}\nAddress:\n{_address.GetAddress()}");
+            string standard = ($"Title: {_eventTitle}\nDescription: {_description}\nDate: {_date.ToShortDateString()}\nTime: {DisplayTimeFrame()}\nAddress: {_address.GetAddress()}");
             return standard;
         }
 
-        public string FullDetails()
-        {
-            return "";
-        }
+        public abstract string FullDetails();
+        
 
         public string ShortDescription()
         {
-            return "";
+            string shortDetails = ($"Eventy Type: {GetType().Name}\nEvent Title: {_eventTitle}\nDate: {_date.ToShortDateString()}\n");
+            return shortDetails;
         }
     }
 }

@@ -19,27 +19,34 @@ namespace Foundation3
 
             Console.WriteLine("\nHello Event Planning World!\n");
 
-            WriteLine("Press any key when ready...");
+            WriteLine("Press any key to see details by event type...");
             ReadKey();
 
             Address address1 = new ("7904 Phoenix Pass", "Austin", "TX", 78737);
-            Reception reception = new ("Brown-Stevens Wedding", "Wedding Reception for Lacey Brown and Ben Stevens", DateTime.Now, TimeSpan.MaxValue, address1, true);        
+            Reception reception = new ("Brown-Stevens Wedding", "Wedding Reception for Lacey Brown and Ben Stevens", new DateTime (2023, 12, 04, 19, 0, 0), new TimeSpan(2, 30, 0), address1, "eventrsvp@gmail.com");        
             _events.Add(reception);
             Address address2 = new ("5678 Bountiful Place", "St. George", "UT", 84502);
-            Lecture lecture = new ("How to Be Successful in College", "Lecture on setting good habits and schedules for college life.", DateTime.Now, TimeSpan.MaxValue, address2, "President Successful",50);
+            Lecture lecture = new ("How to Be Successful in College", "Lecture on setting good habits and schedules for college life.", new DateTime (2023, 8, 30, 17, 30, 0), new TimeSpan(1, 0, 0), address2, "President Successful",50);
             _events.Add(lecture);
             Address address3 = new ("2479 Jump Street", "Boise", "ID", 83701);
-            OutdoorGathering gathering = new ("Summer Gala", "Celebrate the beginning of Summer with a Party", DateTime.Now, TimeSpan.MaxValue, address3, "Sunny with a gentle breeze");
+            OutdoorGathering gathering = new ("Summer Gala", "Celebrate the beginning of Summer with a Party", new DateTime (2024, 6, 1, 10, 0, 0), new TimeSpan (3, 00, 0), address3, "Sunny with a gentle breeze");
             _events.Add(gathering);
 
             
             foreach (Event e in _events)
             {
+                Clear();
                 WriteLine("");
-                WriteLine($"Event Type: {e.GetType().Name}");
+                WriteLine($"{e.GetType().Name}");
+                WriteLine("\nStandard Description:\n");
                 WriteLine(e.StandardDetails());
+                WriteLine("\n\nFull Description:\n");
+                WriteLine(e.FullDetails());
+                WriteLine("\n\nShort Description:\n");
+                WriteLine(e.ShortDescription());
 
-                WriteLine("Press any key when ready...");
+
+                WriteLine("\nPress any key to see next event...");
                 ReadKey();
             }
 

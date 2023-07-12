@@ -14,5 +14,12 @@ namespace Foundation3
         {
             _weather = weather;
         }
+
+        public override string FullDetails()
+        {
+            string full = ($"Title: {_eventTitle}\n\nDescription: {_description}\nDate: {_date.ToShortDateString()}\nTime: {DisplayTimeFrame()}\nExpected Weather: {_weather}\nAddress: {_address.GetAddress()}");
+            return full;
+            
+        }
     }
 }

@@ -5,7 +5,9 @@ using static System.Console;
 
 namespace Foundation3
 {
-
+    /// <summary>
+    /// 
+    /// </summary>
     class Lecture : Event
     {
         private string _speaker;
@@ -15,6 +17,13 @@ namespace Foundation3
         {
             _speaker = speaker;
             _capacity = capacity;
+        }
+
+        public override string FullDetails()
+        {
+            string full = ($"Title: {_eventTitle}\nSpeaker: {_speaker}\nDescription: {_description}\nDate: {_date.ToShortDateString()}\nTime: {DisplayTimeFrame()}\nCapacity: {_capacity}\nAddress: {_address.GetAddress()}");
+            return full;
+            
         }
     }
 }

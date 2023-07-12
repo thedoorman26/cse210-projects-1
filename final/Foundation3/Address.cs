@@ -6,7 +6,7 @@ using static System.Console;
 namespace Foundation3
 {
 
-    class Address
+    public class Address
     {
         private string _street;
         private string _city;
@@ -23,7 +23,7 @@ namespace Foundation3
 
         public string GetAddress()
         {
-            return ($"{_street}\n{_city}, {_state} {_zipcode}\n");
+            return ($"{_street}, {_city}, {_state} {_zipcode}");
         }
     }
 }
