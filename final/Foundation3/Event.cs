@@ -16,12 +16,6 @@ namespace Foundation3
         protected Address _address;
 
 
-        public Event()
-        {
-
-        }
-
-
         //Contructor for the Event class
         public Event(string title, string description, DateTime date, TimeSpan time, Address address)
         {
@@ -57,29 +51,7 @@ namespace Foundation3
 
         //Abstract method so each child class can display specific info related to their event
         public abstract string FullDetails();
-        //{
-            
-            // if  (eventDetailed == "Lecture")
-            // {
-            //     Lecture fullLect = new Lecture();
-            //     string fullLecture = fullLect.LectureFullDetails();
-            //     // string fullLecture = ($"Event Type: {GetType().Name}\nTitle: {_eventTitle}\nSpeaker: {fullLect.GetSpeaker()}\nDescription: {_description}\nDate: {_date.ToShortDateString()}\nTime: {DisplayTimeFrame()}\nCapacity: {_events.GetCapacity()}\nAddress: {_address.GetAddress()}");
-            //     return fullLecture;
-            // }
-            // else if (eventDetailed == "Reception")
-            // {
-            //     Reception fullRecep = new Reception();
-            //     string fullReception = ($"Event Type: {GetType().Name}\nTitle: {_eventTitle}\nDescription: {_description}\nDate: {_date.ToShortDateString()}\nTime: {DisplayTimeFrame()}\nAddress: {_address.GetAddress()}\nPlease RSVP To: {fullRecep.GetRSVP()}");
-            //     return fullReception;
-            // }
-            // else
-            // {
-            //     OutdoorGathering fullOut = new OutdoorGathering();
-            //     string fullOutdoor = ($"Event Type: {GetType().Name}\nTitle: {_eventTitle}\n\nDescription: {_description}\nDate: {_date.ToShortDateString()}\nTime: {DisplayTimeFrame()}\nExpected Weather: {fullOut.GetWeather()}\nAddress: {_address.GetAddress()}");
-            //     return fullOutdoor;
-            // }
-        //}
-        
+
 
         //Method to display short details about an event
         public string ShortDescription()

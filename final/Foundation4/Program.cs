@@ -6,6 +6,9 @@ using System.Text;
 
 namespace Foundation4
 {
+    /*For creativity I added color and wait key pauses so that the information can be viewed per exercise that is tracked.  I formatted the data 
+    as instructed, but kept the practice of wait key so the data didn't just fly by and the program end.
+    */
     class Program
     {
         static void Main(string[] args)

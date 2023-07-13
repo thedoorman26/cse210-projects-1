@@ -33,6 +33,5 @@ namespace Foundation4
         {
             return _speed;
         }
-
     }
 }

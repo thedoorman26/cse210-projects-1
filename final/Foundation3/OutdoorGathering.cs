@@ -5,7 +5,6 @@ using static System.Console;
 
 namespace Foundation3
 {
-
     class OutdoorGathering : Event
     {
         //Private attributes of the OutdoorGathering class
@@ -25,7 +24,5 @@ namespace Foundation3
             string full = ($"Event Type: {GetType().Name}\nTitle: {_eventTitle}\nDescription: {_description}\nDate: {_date.ToShortDateString()}\nTime: {DisplayTimeFrame()}\nExpected Weather: {_weather}\nAddress: {_address.GetAddress()}");
             return full;            
         }
-
-
     }
 }

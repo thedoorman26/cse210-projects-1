@@ -5,21 +5,12 @@ using static System.Console;
 
 namespace Foundation3
 {
-    /// <summary>
-    /// 
-    /// </summary>
     class Lecture : Event
     {
         //Private attributes of the Lecture class
         private string _speaker;
         private int _capacity;
 
-
-        //Constructor for lecture class
-        public Lecture()
-        {
-
-        }
 
         //Constructor for the lecture class
         public Lecture(string title, string description, DateTime date, TimeSpan time, Address address, string speaker, int capacity) :base(title, description, date, time, address)

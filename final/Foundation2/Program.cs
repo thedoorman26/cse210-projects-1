@@ -6,6 +6,9 @@ using static System.Console;
 
 namespace Foundation2
 {
+    /*For creativity I added color, formatted the shipping and product labels to indent for easier reading and identification.  I also added quantity to the 
+    packing label since that is needed for packing.
+    */
     class Program
     {
         static void Main(string[] args)
@@ -28,17 +31,17 @@ namespace Foundation2
             Order order1 = new Order(customer1);
             order1.AddProducts("Soda", 2319, 2.50, 6);
             order1.AddProducts ("Candybar", 2589, 1.75, 3);
-            order1.AddProducts("Milk", 4712, 3.75, 1);
-            order1.AddProducts("Bread", 3597, 2.98, 1);
+            order1.AddProducts("Milk", 4712, 3.75, 2);
+            order1.AddProducts("Bread", 3597, 2.98, 3);
 
 
             //Add second customer order
             Address address2 = new Address("720 E Railway St.", "Raymond", "AB", "T0K 2S0", "CANADA");
             Customer customer2 = new Customer("Meg Larson", address2);
             Order order2 = new Order(customer2);
-            order2.AddProducts("Pancake Mix", 1489, 3.99, 1);
-            order2.AddProducts("Oil", 1264, 2.80, 1);
-            order2.AddProducts("Milk", 4712, 3.75, 1);
+            order2.AddProducts("Pancake Mix", 1489, 3.99, 4);
+            order2.AddProducts("Oil", 1264, 2.80, 2);
+            order2.AddProducts("Milk", 4712, 3.75, 3);
             order2.AddProducts("Dzn Eggs", 3190, 3.25, 2);
 
 

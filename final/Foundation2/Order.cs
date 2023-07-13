@@ -42,7 +42,7 @@ namespace Foundation2
             string prodLabel = "";
             foreach (Product p in _products)
             {
-                prodLabel += ($"   Product ID: {p.GetProdId()} -- {p.GetProdName()}\n");
+                prodLabel += ($"   Product ID: {p.GetProdId()} -- {p.GetProdName()} -- {p.GetProdQty()}\n");
             }
             return prodLabel;
         }

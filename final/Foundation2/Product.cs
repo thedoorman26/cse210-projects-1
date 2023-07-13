@@ -45,5 +45,12 @@ namespace Foundation2
         {
             return _productId;
         }
+
+
+        //Method to return product Qty
+        public int GetProdQty()
+        {
+            return _quantity;
+        }
     }
 }
