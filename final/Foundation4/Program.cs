@@ -10,25 +10,43 @@ namespace Foundation4
     {
         static void Main(string[] args)
         {
-            WriteLine("\nHello Foundation 4 World!\n");
+            //Change Background and Foreground colors
+            BackgroundColor = ConsoleColor.Green;
+            ForegroundColor = ConsoleColor.Gray;
+            Clear();
 
+
+            //Display Intro Message
+            WriteLine("\nExercise Tracking Program!\n");
+            WriteLine("Press any key to see exercise tracking info...");
+            ReadKey();
+
+
+            //List to track activity information
             List<Activity> _activities = new List<Activity>();
 
-            Swimming swimming = new Swimming(DateTime.Now, 45, 50, 20);
+
+            //Exercise activity instances for each category
+            Swimming swimming = new Swimming(new DateTime(2023, 06, 30), 35, 50);
             _activities.Add(swimming);
-            Running running= new Running(DateTime.Now, 40, 3);
+            Running running= new Running(new DateTime(2023, 7, 5), 30, 3);
             _activities.Add(running);
-            Cycling cycle = new Cycling(DateTime.Now, 65, 9.5);
+            Cycling cycle = new Cycling(new DateTime(2023, 7, 12), 65, 9.5);
             _activities.Add(cycle);
 
 
+
+            //Iterate through activity list and display the summary info
             foreach (Activity a in _activities)
             {
                 WriteLine("");
                 WriteLine(a.GetSummary());
                 WriteLine("");
-            }
-            
+
+                //Pause that allows user to look at each set of info
+                WriteLine("Press any key to see next tracking info...");
+                ReadKey();
+            }            
         }
     }
 }
