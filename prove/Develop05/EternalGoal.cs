@@ -18,7 +18,7 @@ namespace EternalQuest
         //Method to create a string to save to a file
         public override string CreatSavedData()
         {
-            string entryData = ($"{_goalType}:{_goalName}~|~{_goalDescription}~|~{_goalPoints}\n");
+            string entryData = ($"{GetGoalType()}:{GetGoalName()}~|~{GetGoalDescription()}~|~{GetGoalPoints()}\n");
             return entryData;           
         }
 
@@ -26,7 +26,7 @@ namespace EternalQuest
         //Method to display specific goal data
         public override string DisplayGoal()
         {
-            string display = ($"{IsComplete()} {_goalType}: {_goalName} ({_goalDescription})");
+            string display = ($"{IsComplete()} {GetGoalType()}: {GetGoalName()} ({GetGoalDescription()})");
             return display;
         }
 

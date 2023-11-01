@@ -59,7 +59,7 @@ namespace EternalQuest
         //Method to create a string to save to a file
         public override string CreatSavedData()
         {
-            string entryData = ($"{_goalType}:{_goalName}~|~{_goalDescription}~|~{_goalPoints}~|~{_bonusPoints}~|~{_timesCompleted}~|~{_repeatTimes}\n");
+            string entryData = ($"{GetGoalType()}:{GetGoalName()}~|~{GetGoalDescription()}~|~{GetGoalPoints()}~|~{_bonusPoints}~|~{_timesCompleted}~|~{_repeatTimes}\n");
             return entryData;           
         }
 
@@ -67,7 +67,7 @@ namespace EternalQuest
         //Method to display specific goal data
         public override string DisplayGoal()
         {
-            string display = ($"{IsComplete()} {_goalType}: {_goalName} ({_goalDescription}) -- Currently completed: {_timesCompleted}/{_repeatTimes} ");
+            string display = ($"{IsComplete()} {GetGoalType()}: {GetGoalName()} ({GetGoalDescription()}) -- Currently completed: {_timesCompleted}/{_repeatTimes} ");
             return display;
         }
 
@@ -107,7 +107,7 @@ namespace EternalQuest
         //Method to change the checkbox from empty to filled if complete
         public override string IsComplete()
         {            
-            return _complete ? "[X]" : "[ ]";            
+            return GetComplete() ? "[X]" : "[ ]";            
         }
         
     }

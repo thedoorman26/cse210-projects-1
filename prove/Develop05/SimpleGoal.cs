@@ -18,14 +18,14 @@ namespace EternalQuest
         //Constructor used to load parsed data strings from a file
         public SimpleGoal(string type, string name, string description, int points, bool status) : base (type, name, description, points)
         {
-           _complete = status;
+           SetComplete(status);
         }
 
 
         //Method to create a string to save to a file
         public override string CreatSavedData()
         {
-            string entryData = ($"{_goalType}:{_goalName}~|~{_goalDescription}~|~{_goalPoints}~|~{_complete}\n");
+            string entryData = ($"{GetGoalType()}:{GetGoalName()}~|~{GetGoalDescription()}~|~{GetGoalPoints()}~|~{GetComplete()}\n");
 
             return entryData;           
         }
@@ -34,7 +34,7 @@ namespace EternalQuest
         //Method to display specific goal data
         public override string DisplayGoal()
         {
-            string display = ($"{IsComplete()} {_goalType}: {_goalName} ({_goalDescription})");
+            string display = ($"{IsComplete()} {GetGoalType()}: {GetGoalName()} ({GetGoalDescription()})");
 
             return display;
         }
@@ -52,7 +52,7 @@ namespace EternalQuest
         //Method to change the checkbox from empty to filled if complete
         public override string IsComplete()
         {
-                return _complete ? "[X]" : "[ ]";
+                return GetComplete() ? "[X]" : "[ ]";
         }
         
     }

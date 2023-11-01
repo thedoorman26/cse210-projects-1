@@ -6,11 +6,11 @@ namespace EternalQuest
     public abstract class Goal
     {
         //Private attributes used in the goal child classes
-        protected string _goalName;
-        protected string _goalDescription;
-        protected int _goalPoints;
-        protected string _goalType;
-        protected bool _complete;
+        private string _goalName;
+        private string _goalDescription;
+        private int _goalPoints;
+        private string _goalType;
+        private bool _complete;
 
 
         //Goal constructor
@@ -36,11 +36,58 @@ namespace EternalQuest
             return _goalName;
         }
 
+        
+        public string GetGoalDescription()
+        {
+            return _goalDescription;
+        }
+
 
         //Getter method for goal points
         public int GetGoalPoints()
         {
             return _goalPoints;
+        }
+
+        public string GetGoalType()
+        {
+            return _goalType;
+        }
+
+
+        public bool GetComplete()
+        {
+            return _complete;
+        }
+
+
+        public void SetGoalName(string goalName)
+        {
+            goalName = _goalName;
+        }
+
+
+        public void SetGoalDescription(string goalDescription)
+        {
+            goalDescription = _goalDescription;
+        }
+
+
+        public void SetGoalPoints(int goalPoints)
+        {
+            goalPoints = _goalPoints;
+        }
+
+
+        public void SetGoalType(string goalType)
+        {
+            goalType = _goalType;
+        }
+
+
+        public void SetComplete(bool complete)
+        {
+            complete = _complete;
         }
         
 
